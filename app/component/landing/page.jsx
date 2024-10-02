@@ -95,7 +95,7 @@ function LandingPage() {
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
             <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
-              We provides
+              We provide
             </button>
             <div className="text-3xl mt-6">
               <p>Effective Sales</p>
@@ -120,7 +120,7 @@ function LandingPage() {
           />
           <div>
             <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
-              We provides
+              We provide
             </button>
             <div className="text-3xl mt-6">
               <p>Effective Inventory</p>
@@ -131,7 +131,7 @@ function LandingPage() {
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
             <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
-              We provides
+              We provide
             </button>
             <div className="text-3xl mt-6">
               <p>Customer</p>
@@ -157,7 +157,7 @@ function LandingPage() {
           />
           <div>
             <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
-              We provides
+              We provide
             </button>
             <div className="text-3xl mt-6">
               <p>Reporting and</p>
@@ -176,7 +176,7 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] left-[4rem] flex flex-col gap-5 text-white">
-            <p className="text-[12px]">We Provides</p>
+            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Effective Sales</p>
               <p>Processing</p>
@@ -192,7 +192,7 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] right-[4rem] flex flex-col gap-5 text-[#0f1235]">
-            <p className="text-[12px]">We Provides</p>
+            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Effective Inventory</p>
               <p>Management</p>
@@ -208,7 +208,7 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] left-[4rem] flex flex-col gap-5 text-[#0f1235]">
-            <p className="text-[12px]">We Provides</p>
+            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Customer</p>
               <p>Relationship</p>
@@ -225,7 +225,7 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] right-[6rem] flex flex-col gap-5  text-white">
-            <p className="text-[12px]">We Provides</p>
+            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Reporting and</p>
               <p>Analytics</p>
@@ -235,7 +235,7 @@ function LandingPage() {
       </section>
       <section className="max-w-full mt-20 pt-14 pb-10 gap-5 flex flex-col justify-center items-center mx-auto bg-[#0f1235] text-white">
         <button className="bg-[#4256a6] text-white rounded-xl py-[6px] px-20  text-sm">
-          Benefit of alaba SP
+          Benefits of alaba SP
         </button>
         <Image
           src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725091193/Group_1000002858_uflffo.svg"
@@ -306,12 +306,13 @@ function LandingPage() {
           Some testimonial
         </button>
         <div className="md:block hidden text-center text-[23px] text-[#0f1235]">
-          <p>Some of our customers has a lot to say about</p>
-          <p>the AlabaSP application</p>
+          <p>Some of our customers have a lot to say about</p>
+          <p>the AlabaSP Application</p>
         </div>
         <div className="md:hidden text-center text-[23px] text-[#0f1235]">
           <p>
-            Some of our customers has a lot to say about the AlabaSP application
+            Some of our customers have a lot to say about the Alaba SP
+            Application
           </p>
         </div>
         {/* <Carousel

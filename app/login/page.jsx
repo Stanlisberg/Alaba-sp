@@ -58,7 +58,8 @@ function LandingPage() {
               </button>
             </form>
             <p className="text-end text-[13px] text-[#979797]">
-              Don't have an account? <span className="font-bold">Sign up.</span>
+              Don&apos;t have an account?{" "}
+              <span className="font-bold">Sign up.</span>
             </p>
           </div>
         </div>
