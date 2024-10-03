@@ -14,7 +14,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className="w-[150px] "
+            className="w-[150px] object-cover"
           />
         </div>
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center">
@@ -48,7 +48,7 @@ function LandingPage() {
           width={25}
           height={1}
           alt="Dash"
-          className="w-[300px] md:w-[500px] transform scale-150"
+          className="w-[300px] md:w-[500px] transform scale-150 object-cover"
         />
       </section>
 
@@ -59,7 +59,7 @@ function LandingPage() {
             width={27}
             height={27}
             alt="Dash"
-            className=""
+            className="object-cover"
           />
           <p>Seamless sale with efficient inventory management</p>
           <Image
@@ -67,7 +67,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className=""
+            className="object-cover"
           />
           <p>Extreme power to the business owners</p>
           <Image
@@ -75,7 +75,7 @@ function LandingPage() {
             width={27}
             height={27}
             alt="Dash"
-            className=""
+            className="object-cover"
           />
           <p>
             Get a quick snapshot of your current stock levels, recent orders,
@@ -86,7 +86,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className=""
+            className="object-cover"
           />
           <p>Analyze sales trends and performance over time.</p>
         </div>
@@ -107,7 +107,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className="w-[230px]"
+            className="w-[230px] object-cover"
           />
         </div>
         <div className="flex flex-col-reverse gap-12 justify-center items-center">
@@ -116,7 +116,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className="w-[230px]"
+            className="w-[230px] object-cover"
           />
           <div>
             <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
@@ -144,7 +144,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className="w-[230px]"
+            className="w-[230px] object-cover"
           />
         </div>
         <div className="flex flex-col-reverse gap-12 justify-center items-center">
@@ -153,7 +153,7 @@ function LandingPage() {
             width={25}
             height={25}
             alt="Dash"
-            className="w-[230px]"
+            className="w-[230px] object-cover"
           />
           <div>
             <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
@@ -242,14 +242,14 @@ function LandingPage() {
           width={25}
           height={25}
           alt="Dash"
-          className="w-[350px] md:w-[730px]"
+          className="w-[350px] md:w-[730px] object-cover"
         />
         <Image
           src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725091628/Adjust_iPad_Pro_Mockup_1_xmicbs.svg"
           width={25}
           height={25}
           alt="Dash"
-          className="w-[700px] md:w-[900px] transform scale-150 md:scale-105"
+          className="w-[700px] md:w-[900px] transform scale-150 md:scale-105 object-cover"
         />
       </section>
       <section className="bg-[#eccb8fe4] pt-16 pb-10 md:pr-20 gap-20 md:py-40 flex flex-col md:flex-row justify-center items-center">
@@ -258,7 +258,7 @@ function LandingPage() {
           width={25}
           height={25}
           alt="Dash"
-          className="w-[270px] md:w-[350px] transform scale-150"
+          className="w-[270px] md:w-[350px] transform scale-150 object-cover"
         />
         <div className="text-[#0F1235] text-center md:text-start font-bold text-2xl md:mr-40 ">
           <p>Download app on</p>
@@ -271,7 +271,7 @@ function LandingPage() {
                   width={16}
                   height={16}
                   alt="Dash"
-                  className="transform scale-150"
+                  className="transform scale-150 object-cover"
                 />
                 <div className="text-start">
                   <span className="text-[14px]">Google Play</span>
@@ -288,7 +288,7 @@ function LandingPage() {
                   width={16}
                   height={16}
                   alt="Dash"
-                  className="transform scale-150"
+                  className="transform scale-150 object-cover"
                 />
                 <div className="text-start">
                   <span className="text-[14px]">Google Play</span>
@@ -334,7 +334,7 @@ function LandingPage() {
                 width={16}
                 height={16}
                 alt="Dash"
-                className="w-[50px]"
+                className="w-[50px] object-cover"
               />
             </div>
             <div className="flex">
@@ -353,7 +353,7 @@ function LandingPage() {
                 width={16}
                 height={16}
                 alt="Dash"
-                className="w-[50px]"
+                className="w-[50px] object-cover"
               />
             </div>
             <div className="flex">
@@ -372,7 +372,7 @@ function LandingPage() {
                 width={16}
                 height={16}
                 alt="Dash"
-                className="w-[50px]"
+                className="w-[50px] object-cover"
               />
             </div>
             <div className="flex">
@@ -405,7 +405,7 @@ function LandingPage() {
               width={25}
               height={25}
               alt="Dash"
-              className="w-[150px] "
+              className="w-[150px] object-cover"
             />
             <div className="flex flex-col gap-3">
               <button className="px-4 py-2 w-[40%] text-[#4256a6] font-bold border border-[#4256a6] rounded-lg text-center">
@@ -430,21 +430,21 @@ function LandingPage() {
                   width={15}
                   height={15}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px]object-cover "
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover"
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover"
                 />
               </div>
             </div>
@@ -481,21 +481,21 @@ function LandingPage() {
                   width={15}
                   height={15}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover "
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover "
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover "
                 />
               </div>
             </div>
