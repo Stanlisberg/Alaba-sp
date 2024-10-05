@@ -44,7 +44,7 @@ function LandingPage() {
           Sign Up
         </button>
         <Image
-          src="https://res.cloudinary.com/drtzfu730/image/upload/v1725079983/PixelBook_Go_and_Pixel_4_XL_2x_2_1_mtmoif.svg"
+          src="https://res.cloudinary.com/drtzfu730/image/upload/v1728122530/PixelBook_Go_and_Pixel_4_XL_2x_2_ozylqv.png"
           width={25}
           height={1}
           alt="Dash"
@@ -467,37 +467,36 @@ function LandingPage() {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="justify-center items-center col-span-9 md:col-span-4 md:hidden flex flex-col gap-10 md:gap-32">
-            <div></div>
-            <div>
-              <div className="flex flex-row gap-3">
-                <div className="border-b border-black w-10"></div>
-                <div className="text-[10px]">Copyright 2024</div>
-                <div className="border-b border-black w-10"></div>
-              </div>
-              <div className="flex flex-row gap-4 items-center mt-2 pl-12">
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706952/Vector_xkh3xa.svg"
-                  width={15}
-                  height={15}
-                  alt="Dash"
-                  className="w-[16px] object-cover "
-                />
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
-                  width={25}
-                  height={25}
-                  alt="Dash"
-                  className="w-[16px] object-cover "
-                />
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
-                  width={25}
-                  height={25}
-                  alt="Dash"
-                  className="w-[16px] object-cover "
-                />
-              </div>
+        </div>
+        <div className="pb-5 justify-center items-center md:hidden flex flex-col gap-10 md:gap-32">
+          <div>
+            <div className="flex flex-row gap-3">
+              <div className="border-b border-black w-10"></div>
+              <div className="text-[10px]">Copyright 2024</div>
+              <div className="border-b border-black w-10"></div>
+            </div>
+            <div className="flex flex-row gap-4 items-center mt-2 pl-12">
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706952/Vector_xkh3xa.svg"
+                width={15}
+                height={15}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
+                width={25}
+                height={25}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
+                width={25}
+                height={25}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
             </div>
           </div>
         </div>
