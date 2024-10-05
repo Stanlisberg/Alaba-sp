@@ -1,10 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
 
 function LandingPage() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <main className="max-w-full overflow-hidden mx-auto ">
       <nav className="my-10 max-w-[1100px] mx-auto flex py-2 justify-between items-center">
@@ -43,13 +52,15 @@ function LandingPage() {
         <button className="border border-black bg-[#e5cfa5] py-1 px-16 font-bold rounded-2xl">
           Sign Up
         </button>
-        <Image
-          src="https://res.cloudinary.com/drtzfu730/image/upload/v1728122530/PixelBook_Go_and_Pixel_4_XL_2x_2_ozylqv.png"
-          width={25}
-          height={1}
-          alt="Dash"
-          className="w-[300px] md:w-[500px] transform scale-150 object-cover"
-        />
+        <div data-aos="zoom-in">
+          <Image
+            src="https://res.cloudinary.com/drtzfu730/image/upload/v1728122530/PixelBook_Go_and_Pixel_4_XL_2x_2_ozylqv.png"
+            width={25}
+            height={1}
+            alt="Dash"
+            className="w-[300px] md:w-[500px] transform scale-150 object-cover"
+          />
+        </div>
       </section>
 
       <marquee className=" bg-[#4256a6] text-white py-4 ">
@@ -94,35 +105,43 @@ function LandingPage() {
       <section className="flex md:hidden flex-col w-full gap-12 justify-center items-center max-w-[1100px] mx-auto mt-20 ">
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
-            <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
-              We provide
-            </button>
-            <div className="text-3xl mt-6">
+            <div data-aos="fade-up">
+              <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
+                We provide
+              </button>
+            </div>
+            <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Effective Sales</p>
               <p>Processing</p>
             </div>
           </div>
-          <Image
-            src="https://res.cloudinary.com/drtzfu730/image/upload/v1725088811/Group_1000002843_rym2fh.svg"
-            width={25}
-            height={25}
-            alt="Dash"
-            className="w-[230px] object-cover"
-          />
+          <div data-aos="fade-up">
+            <Image
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1728123440/Group_1000002872_xx1yyc.png"
+              width={25}
+              height={25}
+              alt="Dash"
+              className="w-[230px] object-cover"
+            />
+          </div>
         </div>
         <div className="flex flex-col-reverse gap-12 justify-center items-center">
-          <Image
-            src="https://res.cloudinary.com/drtzfu730/image/upload/v1725088824/Group_1000002842_mzyixi.svg"
-            width={25}
-            height={25}
-            alt="Dash"
-            className="w-[230px] object-cover"
-          />
+          <div data-aos="fade-up">
+            <Image
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1725088824/Group_1000002842_mzyixi.svg"
+              width={25}
+              height={25}
+              alt="Dash"
+              className="w-[230px] object-cover"
+            />
+          </div>
           <div>
-            <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
-              We provide
-            </button>
-            <div className="text-3xl mt-6">
+            <div data-aos="fade-up">
+              <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
+                We provide
+              </button>
+            </div>
+            <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Effective Inventory</p>
               <p>Management</p>
             </div>
@@ -130,36 +149,44 @@ function LandingPage() {
         </div>
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
-            <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
-              We provide
-            </button>
-            <div className="text-3xl mt-6">
+            <div data-aos="fade-up">
+              <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
+                We provide
+              </button>
+            </div>
+            <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Customer</p>
               <p>Relationship</p>
               <p>Management</p>
             </div>
           </div>
-          <Image
-            src="https://res.cloudinary.com/drtzfu730/image/upload/v1725088770/Group_1000002846_ix5fbc.svg"
-            width={25}
-            height={25}
-            alt="Dash"
-            className="w-[230px] object-cover"
-          />
+          <div data-aos="fade-up">
+            <Image
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1728123212/Group_1000002846_ozigtz.png"
+              width={25}
+              height={25}
+              alt="Dash"
+              className="w-[230px] object-cover"
+            />
+          </div>
         </div>
         <div className="flex flex-col-reverse gap-12 justify-center items-center">
-          <Image
-            src="https://res.cloudinary.com/drtzfu730/image/upload/v1725088770/Group_1000002846_ix5fbc.svg"
-            width={25}
-            height={25}
-            alt="Dash"
-            className="w-[230px] object-cover"
-          />
+          <div data-aos="fade-up">
+            <Image
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1728123212/Group_1000002846_ozigtz.png"
+              width={25}
+              height={25}
+              alt="Dash"
+              className="w-[230px] object-cover"
+            />
+          </div>
           <div>
-            <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
-              We provide
-            </button>
-            <div className="text-3xl mt-6">
+            <div data-aos="fade-up">
+              <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
+                We provide
+              </button>
+            </div>
+            <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Reporting and</p>
               <p>Analytics</p>
             </div>
@@ -167,7 +194,7 @@ function LandingPage() {
         </div>
       </section>
       <section className="hidden md:flex flex-col w-full gap-16 justify-center items-center max-w-[1100px] mx-auto mt-20">
-        <div className="relative">
+        <div data-aos="flip-right" className="relative ">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1726301792/Untitled_dxmg2k.svg"
             width={25}
@@ -183,7 +210,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="relative">
+        <div data-aos="flip-left" className="relative">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1726315929/Group_1000002880_2_ho88b5.svg"
             width={25}
@@ -199,7 +226,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="relative">
+        <div data-aos="flip-right" className="relative">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1726315855/Group_1000002877_ngnwpy.svg"
             width={25}
@@ -216,7 +243,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="relative">
+        <div data-aos="flip-left" className="relative">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1726315844/Group_1000002881_wxe4kc.svg"
             width={25}
@@ -242,24 +269,28 @@ function LandingPage() {
           width={25}
           height={25}
           alt="Dash"
-          className="w-[350px] md:w-[730px] object-cover"
+          className="w-[350px] md:w-[730px] object-cover scale"
         />
-        <Image
-          src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725091628/Adjust_iPad_Pro_Mockup_1_xmicbs.svg"
-          width={25}
-          height={25}
-          alt="Dash"
-          className="w-[700px] md:w-[900px] transform scale-150 md:scale-105 object-cover"
-        />
+        <div data-aos="zoom-out">
+          <Image
+            src="https://res.cloudinary.com/drtzfu730/image/upload/v1728123815/Adjust_iPad_Pro_Mockup_1_dlxvlv.png"
+            width={25}
+            height={25}
+            alt="Dash"
+            className="pl-5 w-[700px] md:w-[900px] transform scale-100 md:scale-105 object-cover"
+          />
+        </div>
       </section>
       <section className="bg-[#eccb8fe4] pt-16 pb-10 md:pr-20 gap-20 md:py-40 flex flex-col md:flex-row justify-center items-center">
-        <Image
-          src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725094760/phone_with_shadow_2x_1_1_otrx7m.svg"
-          width={25}
-          height={25}
-          alt="Dash"
-          className="w-[270px] md:w-[350px] transform scale-150 object-cover"
-        />
+        <div data-aos="zoom-out">
+          <Image
+            src="https://res.cloudinary.com/drtzfu730/image/upload/v1728124085/phone_with_shadow_2x_1_azydhq.png"
+            width={25}
+            height={25}
+            alt="Dash"
+            className="w-[270px] md:w-[350px] transform scale-150 object-cover"
+          />
+        </div>
         <div className="text-[#0F1235] text-center md:text-start font-bold text-2xl md:mr-40 ">
           <p>Download app on</p>
           <p>your mobile</p>
@@ -302,14 +333,21 @@ function LandingPage() {
         </div>
       </section>
       <section className="max-w-[1100px] mx-auto mt-32 flex flex-col gap-7 justify-center items-center">
-        <button className="bg-[#0f1235] text-white px-20 py-[6px] rounded-lg">
-          Some testimonial
-        </button>
-        <div className="md:block hidden text-center text-[23px] text-[#0f1235]">
-          <p>Some of our customers have a lot to say about</p>
-          <p>the AlabaSP Application</p>
+        <div data-aos="fade-right">
+          <button className="bg-[#0f1235] text-white px-20 py-[6px] rounded-lg">
+            Some testimonial
+          </button>
         </div>
-        <div className="md:hidden text-center text-[23px] text-[#0f1235]">
+        <div className="md:block hidden text-center text-[23px] text-[#0f1235]">
+          <div data-aos="fade-left">
+            <p>Some of our customers have a lot to say about</p>
+            <p>the AlabaSP Application</p>
+          </div>
+        </div>
+        <div
+          data-aos="fade-left"
+          className="md:hidden text-center px-6 text-[23px] text-[#0f1235]"
+        >
           <p>
             Some of our customers have a lot to say about the Alaba SP
             Application
@@ -387,10 +425,12 @@ function LandingPage() {
         {/* </Carousel> */}
       </section>
       <section className="max-w-[1100px] mx-auto flex flex-col gap-5 justify-center items-center mt-32">
-        <p className="text-center text-[25px] text-[#0f1235]">
-          Subscribe to our newsletter
-        </p>
-        <div className="flex flex-col md:flex-row gap-5">
+        <div data-aos="fade-left">
+          <p className="text-center text-[25px] text-[#0f1235]">
+            Subscribe to our newsletter
+          </p>
+        </div>
+        <div data-aos="fade-right" className="flex flex-col md:flex-row gap-5">
           <input className="border border-black px-10 py-1 rounded-lg" />
           <button className="bg-[#0f1235] text-white text-[14px] px-8 py-2 md:py-0 rounded-lg">
             Subscribe
