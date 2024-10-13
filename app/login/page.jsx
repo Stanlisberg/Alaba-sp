@@ -65,14 +65,14 @@ function LandingPage() {
         </div>
       </section>
       <footer className="max-w-full px-32 custom mt-32 ">
-        <div className="grid grid-cols-12 w-full md:max-w-[1100px] px-5 mx-auto text-[12px] pb-10 md:pb-20 gap-10">
+        <div className="grid grid-cols-12 w-full md:max-w-[1100px] px-5 mx-auto text-[12px] pb-10 md:20 gap-10">
           <div className="col-span-10 md:col-span-4 flex flex-col gap-10 ">
             <Image
               src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"
               width={25}
               height={25}
               alt="Dash"
-              className="w-[150px] "
+              className="w-[150px] object-cover"
             />
             <div className="flex flex-col gap-3">
               <button className="px-4 py-2 w-[40%] text-[#4256a6] font-bold border border-[#4256a6] rounded-lg text-center">
@@ -97,21 +97,21 @@ function LandingPage() {
                   width={15}
                   height={15}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px]object-cover "
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover"
                 />
                 <Image
                   src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
                   width={25}
                   height={25}
                   alt="Dash"
-                  className="w-[16px] "
+                  className="w-[16px] object-cover"
                 />
               </div>
             </div>
@@ -134,37 +134,36 @@ function LandingPage() {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="justify-center items-center col-span-9 md:col-span-4 md:hidden flex flex-col gap-10 md:gap-32">
-            <div></div>
-            <div>
-              <div className="flex flex-row gap-3">
-                <div className="border-b border-black w-10"></div>
-                <div className="text-[10px]">Copyright 2024</div>
-                <div className="border-b border-black w-10"></div>
-              </div>
-              <div className="flex flex-row gap-4 items-center mt-2 pl-12">
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706952/Vector_xkh3xa.svg"
-                  width={15}
-                  height={15}
-                  alt="Dash"
-                  className="w-[16px] "
-                />
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
-                  width={25}
-                  height={25}
-                  alt="Dash"
-                  className="w-[16px] "
-                />
-                <Image
-                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
-                  width={25}
-                  height={25}
-                  alt="Dash"
-                  className="w-[16px] "
-                />
-              </div>
+        </div>
+        <div className="pb-5 justify-center items-center md:hidden flex flex-col gap-10 md:gap-32">
+          <div>
+            <div className="flex flex-row gap-3">
+              <div className="border-b border-black w-10"></div>
+              <div className="text-[10px]">Copyright 2024</div>
+              <div className="border-b border-black w-10"></div>
+            </div>
+            <div className="flex flex-row gap-4 items-center mt-2 pl-12">
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706952/Vector_xkh3xa.svg"
+                width={15}
+                height={15}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725706946/Vector_1_xc3woa.svg"
+                width={25}
+                height={25}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
+              <Image
+                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725701465/Group_1000002869_rmod4v.svg"
+                width={25}
+                height={25}
+                alt="Dash"
+                className="w-[16px] object-cover "
+              />
             </div>
           </div>
         </div>

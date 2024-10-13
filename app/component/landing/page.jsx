@@ -6,8 +6,11 @@ import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from "react-responsive-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 function LandingPage() {
   useEffect(() => {
@@ -63,7 +66,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <marquee className=" bg-[#4256a6] text-white py-4 ">
+      <marquee className=" bg-[#4256a6] text-white py-4 mt-16">
         <div className="flex flex-row gap-4 justify-center items-center">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1725081492/Star_1_dbfy9d.svg"
@@ -264,13 +267,15 @@ function LandingPage() {
         <button className="bg-[#4256a6] text-white rounded-xl py-[6px] px-20  text-sm">
           Benefits of alaba SP
         </button>
-        <Image
-          src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725091193/Group_1000002858_uflffo.svg"
-          width={25}
-          height={25}
-          alt="Dash"
-          className="w-[350px] md:w-[730px] object-cover scale"
-        />
+        <div>
+          <Image
+            src=" https://res.cloudinary.com/drtzfu730/image/upload/v1725091193/Group_1000002858_uflffo.svg"
+            width={25}
+            height={25}
+            alt="Dash"
+            className="w-[350px] md:w-[730px] object-cover scale"
+          />
+        </div>
         <div data-aos="zoom-out">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1728123815/Adjust_iPad_Pro_Mockup_1_dlxvlv.png"
@@ -353,76 +358,96 @@ function LandingPage() {
             Application
           </p>
         </div>
-        {/* <Carousel
-          showThumbs={false}
-          autoPlay={true}
-          transitionTime={1}
-          infiniteLoop={true}
-          showStatus={false}
-          showArrows={false}
-          className={styles.carousel}
-          dynamicHeight={true}
-        > */}
-        <div className="grid grid-cols-1 md:grid-cols-3 px-3 gap-5 mt-10">
-          <div className="bg-[#efefee] shadow-xl px-10 py-10 flex flex-col gap-10 rounded-lg">
-            <div className="flex flex-row gap-5 justify-between items-center">
-              <p className="font-bold">Joel Komodo</p>
-              <Image
-                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725696675/Mask_group_w7vgrg.svg"
-                width={16}
-                height={16}
-                alt="Dash"
-                className="w-[50px] object-cover"
-              />
+      </section>
+      <section className="flex w-full gap-5 md:px-20 px-5 rounded-xl mt-16">
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            620: {
+              spaceBetween: 15,
+              slidesPerView: 2,
+            },
+            1140: {
+              spaceBetween: 15,
+              slidesPerView: 2,
+            },
+            1200: {
+              spaceBetween: 15,
+              slidesPerView: 3,
+            },
+
+            1400: {
+              spaceBetween: 15,
+              slidesPerView: 4,
+            },
+          }}
+          onSlideChange={() => console.log("slide change")}
+        >
+          <SwiperSlide>
+            <div className="bg-gray-200 gap-10  w-full h-full flex flex-col px-6 py-12 rounded-[10px]">
+              <div className="flex flex-row gap-5 justify-between items-center">
+                <p className="font-bold">Sarah Mark</p>
+                <Image
+                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1725696675/Mask_group_w7vgrg.svg"
+                  width={16}
+                  height={16}
+                  alt="Dash"
+                  className="w-[50px] object-cover"
+                />
+              </div>
+              <div className="flex">
+                <p className="w-[300px]">
+                  What ever you hear from about Alaba SP, Just take it as it is.
+                  A very good app for inventory
+                </p>
+                <div></div>
+              </div>
             </div>
-            <div className="flex">
-              <p className="w-[300px]">
-                What ever you hear from about Alaba SP, Just take it as it is. A
-                very good app for inventory
-              </p>
-              <div></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-gray-200 gap-10  w-full h-full flex flex-col px-6 py-12 rounded-[10px]">
+              <div className="flex flex-row gap-5 justify-between items-center">
+                <p className="font-bold">Frank Joshua</p>
+                <Image
+                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1728800072/Mask_group_1_ohaqtj.svg"
+                  width={16}
+                  height={16}
+                  alt="Dash"
+                  className="w-[50px] object-cover"
+                />
+              </div>
+              <div className="flex">
+                <p className="w-[300px]">
+                  What ever you hear from about Alaba SP, Just take it as it is.
+                  A very good app for inventory
+                </p>
+                <div></div>
+              </div>
             </div>
-          </div>
-          <div className="bg-[#efefee] shadow-xl px-10 py-10 flex flex-col gap-10 rounded-lg">
-            <div className="flex flex-row gap-5 justify-between items-center">
-              <p className="font-bold">Joel Komodo</p>
-              <Image
-                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725696675/Mask_group_w7vgrg.svg"
-                width={16}
-                height={16}
-                alt="Dash"
-                className="w-[50px] object-cover"
-              />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-gray-200 gap-10  w-full h-full flex flex-col px-6 py-12 rounded-[10px]">
+              <div className="flex flex-row gap-5 justify-between items-center">
+                <p className="font-bold">Philip Moore</p>
+                <Image
+                  src="https://res.cloudinary.com/drtzfu730/image/upload/v1728800064/Mask_group_2_o4iqjb.svg"
+                  width={16}
+                  height={16}
+                  alt="Dash"
+                  className="w-[50px] object-cover"
+                />
+              </div>
+              <div className="flex">
+                <p className="w-[300px]">
+                  What ever you hear from about Alaba SP, Just take it as it is.
+                  A very good app for inventory
+                </p>
+                <div></div>
+              </div>
             </div>
-            <div className="flex">
-              <p className="w-[300px]">
-                What ever you hear from about Alaba SP, Just take it as it is. A
-                very good app for inventory
-              </p>
-              <div></div>
-            </div>
-          </div>
-          <div className="bg-[#efefee] shadow-xl px-10 py-10 flex flex-col gap-10 rounded-lg">
-            <div className="flex flex-row gap-5 justify-between items-center">
-              <p className="font-bold">Joel Komodo</p>
-              <Image
-                src="https://res.cloudinary.com/drtzfu730/image/upload/v1725696675/Mask_group_w7vgrg.svg"
-                width={16}
-                height={16}
-                alt="Dash"
-                className="w-[50px] object-cover"
-              />
-            </div>
-            <div className="flex">
-              <p className="w-[300px]">
-                What ever you hear from about Alaba SP, Just take it as it is. A
-                very good app for inventory
-              </p>
-              <div></div>
-            </div>
-          </div>
-        </div>
-        {/* </Carousel> */}
+          </SwiperSlide>
+        </Swiper>
       </section>
       <section className="max-w-[1100px] mx-auto flex flex-col gap-5 justify-center items-center mt-32">
         <div data-aos="fade-left">

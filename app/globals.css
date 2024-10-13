@@ -32,3 +32,11 @@
   padding: 1.813rem 0 0 1.6rem;
   background-repeat: no-repeat;
 }
+
+.swiper-pagination-bullet {
+  background-color: #0f1235;
+  color: #0f1235;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}
