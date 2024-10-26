@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { FiMenu } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -19,7 +20,7 @@ function LandingPage() {
 
   return (
     <main className="max-w-full overflow-hidden mx-auto ">
-      <nav className="my-10 max-w-[1100px] mx-auto flex py-2 justify-between items-center">
+      <nav className="my-10 max-w-[1100px] mx-auto flex py-2 px-5 justify-between items-center">
         <div>
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"
@@ -29,6 +30,7 @@ function LandingPage() {
             className="w-[150px] object-cover"
           />
         </div>
+        <FiMenu size="30" className="md:hidden" />
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center">
           <div className="cursor-pointer">How we work</div>
           <div className="cursor-pointer">Sign up</div>
@@ -39,29 +41,40 @@ function LandingPage() {
           </Link>
         </div>
       </nav>
-      <section className="max-w-[1100px] px-8 mt-20 flex flex-col gap-7 justify-center items-center mx-auto ">
-        <div className="hidden md:block text-4xl text-[#0f1235] font-[500]">
-          <p>
-            Seamless <span className="font-extrabold">inventory</span>
+      <section className="max-w-[1100px]  md:flex-row md:px-8 px-6 mt-20 flex flex-col gap-24 justify-center items-center mx-auto ">
+        <div className="w-full text-start md:w-[60%]">
+          <div className="hidden md:block text-4xl text-[#0f1235] font-[500]">
+            <p>
+              Seamless Point Of Sales And
+              <span className="font-extrabold"> Inventory</span>
+            </p>
+            <p>Management Solution At Your Finger Tip</p>
+          </div>
+          <div className="md:hidden block text-4xl text-[#0f1235] font-[500]">
+            <p>
+              Seamless Point Of Sales And
+              <span className="font-extrabold"> Inventory </span>
+              Management Solution At Your Finger Tips
+            </p>
+          </div>
+          <p className="mt-3">
+            Experience the future of business management with our comprehensive,
+            user-friendly solution tailored to meet the dynamic needs of modern
+            enterprises. Seamlessly integrate point of sales, inventory
+            management, and advanced reporting/analytics into one intuitive
+            platform.
           </p>
-          <p>at your finger tips</p>
+          <button className="border border-black bg-[#0f1235] text-white mt-5 py-1 px-7 rounded-lg font-normal">
+            Sign Up
+          </button>
         </div>
-        <div className="md:hidden block text-4xl text-[#0f1235] font-[500] text-center">
-          <p>
-            Seamless <span className="font-extrabold">inventory </span>
-            at your finger tips
-          </p>
-        </div>
-        <button className="border border-black bg-[#e5cfa5] py-1 px-16 font-bold rounded-2xl">
-          Sign Up
-        </button>
-        <div data-aos="zoom-in">
+        <div className="w-[40%]" data-aos="zoom-in">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1728122530/PixelBook_Go_and_Pixel_4_XL_2x_2_ozylqv.png"
             width={25}
             height={1}
             alt="Dash"
-            className="w-[300px] md:w-[500px] transform scale-150 object-cover"
+            className="w-[600px] md:w-[500px] transform scale-150 object-cover"
           />
         </div>
       </section>
@@ -109,9 +122,9 @@ function LandingPage() {
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
             <div data-aos="fade-up">
-              <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
+              {/* <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
                 We provide
-              </button>
+              </button> */}
             </div>
             <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Effective Sales</p>
@@ -140,12 +153,13 @@ function LandingPage() {
           </div>
           <div>
             <div data-aos="fade-up">
-              <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
+              {/* <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
                 We provide
-              </button>
+              </button> */}
             </div>
             <div data-aos="fade-up" className="text-3xl mt-6">
-              <p>Effective Inventory</p>
+              <p>Effective</p>
+              <p>Inventory</p>
               <p>Management</p>
             </div>
           </div>
@@ -153,9 +167,9 @@ function LandingPage() {
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
             <div data-aos="fade-up">
-              <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
+              {/* <button className="bg-[#4256a6] text-white rounded-xl py-[2px]  px-6  text-sm">
                 We provide
-              </button>
+              </button> */}
             </div>
             <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Customer</p>
@@ -185,9 +199,9 @@ function LandingPage() {
           </div>
           <div>
             <div data-aos="fade-up">
-              <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
+              {/* <button className="bg-[#e5cfa5] text-black rounded-xl py-[2px]  px-6  text-sm">
                 We provide
-              </button>
+              </button> */}
             </div>
             <div data-aos="fade-up" className="text-3xl mt-6">
               <p>Reporting and</p>
@@ -206,11 +220,16 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] left-[4rem] flex flex-col gap-5 text-white">
-            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Effective Sales</p>
               <p>Processing</p>
             </div>
+            <p className="w-[50%]">
+              Empower your team with real-time data acces to streamline the
+              entire sales processes, from selecting items and summarizing the
+              transaction to choosing a payment mode (cash, bank, etc.) and
+              generating the final receipt.
+            </p>
           </div>
         </div>
         <div data-aos="flip-left" className="relative">
@@ -221,12 +240,16 @@ function LandingPage() {
             alt="Dash"
             className="w-[700px] object-cover"
           />
-          <div className="absolute top-[8rem] right-[4rem] flex flex-col gap-5 text-[#0f1235]">
-            <p className="text-[12px]">We Provide</p>
+          <div className="absolute top-[8rem] right-[4rem] left-[20rem] flex flex-col gap-5 text-[#0f1235]">
             <div className="font-base text-3xl">
               <p>Effective Inventory</p>
               <p>Management</p>
             </div>
+            <p className="w-full">
+              Our intuitive inventory management system simplifies the process
+              of inputting items, tracking stock levels, and organizing
+              inventory, ensuring efficient and hassle-free management.
+            </p>
           </div>
         </div>
         <div data-aos="flip-right" className="relative">
@@ -238,12 +261,16 @@ function LandingPage() {
             className="w-[700px] object-cover"
           />
           <div className="absolute top-[8rem] left-[4rem] flex flex-col gap-5 text-[#0f1235]">
-            <p className="text-[12px]">We Provide</p>
             <div className="font-base text-3xl">
               <p>Customer</p>
               <p>Relationship</p>
               <p>Management</p>
             </div>
+            <p className="w-[50%]">
+              Our intuitive inventory management system simplifies the process
+              of inputting items, tracking stock levels, and organizing
+              inventory, ensuring efficient and hassle-free management.
+            </p>
           </div>
         </div>
         <div data-aos="flip-left" className="relative">
@@ -254,12 +281,16 @@ function LandingPage() {
             alt="Dash"
             className="w-[700px] object-cover"
           />
-          <div className="absolute top-[8rem] right-[6rem] flex flex-col gap-5  text-white">
-            <p className="text-[12px]">We Provide</p>
+          <div className="absolute top-[8rem] right-[6rem]  left-[20rem] flex flex-col gap-5  text-white">
             <div className="font-base text-3xl">
               <p>Reporting and</p>
               <p>Analytics</p>
             </div>
+            <p className="w-full">
+              Our robust analytics provide actionable insights, helping you make
+              informed decisions to drive growth and scale your enterprise
+              efficiently.
+            </p>
           </div>
         </div>
       </section>
