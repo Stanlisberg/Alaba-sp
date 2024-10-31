@@ -1,9 +1,9 @@
-import LandingPage from "./component/landing/page";
+import Home from "./(component)/home/page";
 
-export default function Home() {
+export default function Page() {
   return (
     <main className="">
-      <LandingPage />
+      <Home />
     </main>
   );
 }

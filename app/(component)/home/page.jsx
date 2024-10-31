@@ -13,14 +13,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-function LandingPage() {
+function Home() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
   return (
     <main className="max-w-full overflow-hidden mx-auto ">
-      <nav className="my-10 max-w-[1100px] mx-auto flex py-2 px-5 justify-between items-center">
+      <nav className="my-10 max-w-[1200px] mx-auto flex py-2 px-5 justify-between items-center">
         <div>
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"
@@ -33,28 +33,30 @@ function LandingPage() {
         <FiMenu size="30" className="md:hidden" />
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center">
           <div className="cursor-pointer">How we work</div>
-          <div className="cursor-pointer">Sign up</div>
           <Link href="/login">
+            <div className="cursor-pointer">Sign up</div>
+          </Link>
+          <Link href="/sales-report">
             <button className="border-2 border-[#0f1235] py-1 px-5 rounded-lg">
               My Dashboard
             </button>
           </Link>
         </div>
       </nav>
-      <section className="max-w-[1100px]  md:flex-row md:px-8 px-6 mt-20 flex flex-col gap-24 justify-center items-center mx-auto ">
+      <section className="max-w-[1200px]  md:flex-row md:px-8 px-6 mt-20 flex flex-col gap-24 justify-center items-center mx-auto ">
         <div className="w-full text-start md:w-[60%]">
           <div className="hidden md:block text-4xl text-[#0f1235] font-[500]">
             <p>
               Seamless Point Of Sales And
               <span className="font-extrabold"> Inventory</span>
             </p>
-            <p>Management Solution At Your Finger Tip</p>
+            <p>Management Solution</p>
           </div>
           <div className="md:hidden block text-4xl text-[#0f1235] font-[500]">
             <p>
               Seamless Point Of Sales And
               <span className="font-extrabold"> Inventory </span>
-              Management Solution At Your Finger Tips
+              Management Solution
             </p>
           </div>
           <p className="mt-3">
@@ -118,7 +120,7 @@ function LandingPage() {
           <p>Analyze sales trends and performance over time.</p>
         </div>
       </marquee>
-      <section className="flex md:hidden flex-col w-full gap-12 justify-center items-center max-w-[1100px] mx-auto mt-20 ">
+      <section className="flex md:hidden flex-col w-full gap-12 justify-center items-center max-w-[1200px] mx-auto mt-20 ">
         <div className="flex flex-col gap-12 justify-center items-center">
           <div>
             <div data-aos="fade-up">
@@ -210,7 +212,7 @@ function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="hidden md:flex flex-col w-full gap-16 justify-center items-center max-w-[1100px] mx-auto mt-20">
+      <section className="hidden md:flex flex-col w-full gap-16 justify-center items-center max-w-[1200px] mx-auto mt-20">
         <div data-aos="flip-right" className="relative ">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1726301792/Untitled_dxmg2k.svg"
@@ -368,7 +370,7 @@ function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="max-w-[1100px] mx-auto mt-32 flex flex-col gap-7 justify-center items-center">
+      <section className="max-w-[1200px] mx-auto mt-32 flex flex-col gap-7 justify-center items-center">
         <div data-aos="fade-right">
           <button className="bg-[#0f1235] text-white px-20 py-[6px] rounded-lg">
             Some testimonial
@@ -480,7 +482,7 @@ function LandingPage() {
           </SwiperSlide>
         </Swiper>
       </section>
-      <section className="max-w-[1100px] mx-auto flex flex-col gap-5 justify-center items-center mt-32">
+      <section className="max-w-[1200px] mx-auto flex flex-col gap-5 justify-center items-center mt-32">
         <div data-aos="fade-left">
           <p className="text-center text-[25px] text-[#0f1235]">
             Subscribe to our newsletter
@@ -601,4 +603,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Home;

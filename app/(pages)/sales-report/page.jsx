@@ -1,0 +1,241 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Landing from "@/app/(component)/dashboard/page";
+import { DatePickerComp } from "@/app/custom/date-picker";
+import { CustomSelect } from "@/app/custom/select-comp";
+import {
+  BlueCounter,
+  GreenCounter,
+  GreyCounter,
+  PinkCounter,
+  PurpleCounter,
+} from "@/app/custom/counter-comp";
+import "aos/dist/aos.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { ExportButton } from "@/app/custom/export-comp";
+import dynamic from "next/dynamic";
+import { AreaChatComp } from "@/app/custom/area-chat-comp";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+
+function page() {
+  const [date, setDate] = useState();
+
+  const salesData = [
+    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, ‘24", sales: "Sales Report" },
+  ];
+
+  const [state, setState] = useState({
+    options: {
+      chart: {
+        id: "currency-rate-graph",
+      },
+      xaxis: {
+        categories: [],
+      },
+      stroke: {
+        curve: "smooth",
+      },
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [],
+      },
+    ],
+  });
+
+  useEffect(() => {
+    setState({
+      options: {
+        chart: {
+          id: "currency-rate-graph",
+        },
+        xaxis: {
+          categories: ["2020", "2021", "2022", "2023"],
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        colors: ["#7041de", "#3CD856", "#EF4444"],
+      },
+      series: [
+        {
+          name: "Gross Sales",
+          data: [600, 400, 700, 300],
+        },
+
+        {
+          name: "Net Sales",
+          data: [400, 990, 500, 200],
+        },
+
+        {
+          name: "Customer Satisfaction",
+          data: [200, 700, 300, 900],
+        },
+      ],
+    });
+  }, []);
+
+  return (
+    <Landing>
+      <div className=" flex justify-between items-center ">
+        <DatePickerComp
+          value={date}
+          onChange={(date) => setDate(date)}
+          style={{ width: "400px", fontSize: "16px" }}
+        />
+        <CustomSelect
+          labelText=""
+          value={"Days"}
+          errorMessage=""
+          options=""
+          style={{ width: "280px" }}
+          size="medium"
+        />
+        <CustomSelect
+          labelText=""
+          value={"All Employee"}
+          errorMessage=""
+          options=""
+          style={{ width: "280px" }}
+          size="medium"
+        />
+      </div>
+      <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8">
+        <div className="flex px-10 justify-between items-center pt-5">
+          <div>
+            <h3 className="text-[1rem] text-[#05004E] font-[600]">
+              Today's Sales
+            </h3>
+            <p className="text-[0.7rem] text-[#737791]">Sales Summary</p>
+          </div>
+          <ExportButton fileName={"Staff List"} csvData={""} headers={""} />
+        </div>
+        <div className="flex justify-center items-center pt-5 px-10 gap-5">
+          {/* <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            620: {
+              spaceBetween: 15,
+              slidesPerView: 2,
+            },
+            1140: {
+              spaceBetween: 15,
+              slidesPerView: 2,
+            },
+            1200: {
+              spaceBetween: 15,
+              slidesPerView: 3,
+            },
+
+            1400: {
+              spaceBetween: 15,
+              slidesPerView: 4,
+            },
+          }}
+          onSlideChange={() => console.log("slide change")}
+        > */}
+          {/* <SwiperSlide> */}
+          <PinkCounter
+            icon={
+              "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
+            }
+            count={"$1k"}
+            text={"Gross Sales"}
+            subText={"+8% from yesterday"}
+          />
+          {/* </SwiperSlide>
+          <SwiperSlide> */}
+          <GreyCounter
+            icon={
+              "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236158/Icon_1_fjyhv1.svg"
+            }
+            count={"$4k"}
+            text={"Refund"}
+            subText={"+4% refunded"}
+          />
+          {/* </SwiperSlide>
+          <SwiperSlide> */}
+          <BlueCounter
+            icon={
+              "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
+            }
+            count={"$1k"}
+            text={"Net Sales"}
+            subText={"+8% from yesterday"}
+          />
+          {/* </SwiperSlide>
+          <SwiperSlide> */}
+          <GreenCounter
+            icon={
+              "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236211/Icon_4_bunvun.svg"
+            }
+            count={"5%"}
+            text={"Discount"}
+            subText={"+8% from yesterday"}
+          />
+          <PurpleCounter
+            icon={
+              "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236097/Icon_3_swkeds.svg"
+            }
+            count={"$1k"}
+            text={"Net Profit"}
+            subText={"+8% from yesterday"}
+          />
+          {/* </SwiperSlide>
+        </Swiper> */}
+        </div>
+      </div>
+      <div className="flex w-full mt-5 gap-3">
+        <div className="w-[72%] bg-[#F8F9FA] rounded-lg">
+          <div className="flex px-10 justify-between items-center pt-5">
+            <div>
+              <h3 className="text-[1rem] text-[#05004E] font-[600]">
+                Today's Sales
+              </h3>
+              <p className="text-[0.7rem] text-[#737791]">Sales Summary</p>
+            </div>
+            <ExportButton fileName={"Staff List"} csvData={""} headers={""} />
+          </div>
+          <div className="mt-4">
+            <Chart
+              options={state.options}
+              series={state.series}
+              type="line"
+              height={200}
+            />
+          </div>
+        </div>
+        <div className="w-[28%] bg-[#F8F9FA] px-4 py-6 rounded-lg">
+          <h1 className="text-[1rem] text-[#05004E] font-[600]">Exports</h1>
+          {salesData.map((item, index) => (
+            <div className="flex mt-2 flex-row justify-between items-center border-t pt-2 border-[#B6B6B6]">
+              <div className="text-[#425166] text-[14px]" key={index}>
+                {item.date}
+              </div>
+              <div className="bg-[#d6eaf2]  text-[#0F1235] text-[13px] rounded-[10px] px-4 py-1">
+                {item.sales}
+              </div>
+            </div>
+          ))}
+          <div className="flex justify-center items-center">
+            <button className="bg-[#4256A6] text-[#fff] text-[14px] rounded-[10px] mt-4 px-12 py-1">
+              Load more
+            </button>
+          </div>
+        </div>
+      </div>
+    </Landing>
+  );
+}
+
+export default page;

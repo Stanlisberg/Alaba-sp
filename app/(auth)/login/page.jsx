@@ -1,12 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 function LandingPage() {
+  const router = useRouter();
   return (
     <main className="max-w-full mx-auto">
-      <nav className="my-10 max-w-[1100px] mx-auto flex py-2 justify-between items-center">
-        <div>
+      <nav className="my-10 max-w-[1200px] mx-auto flex py-2 justify-between items-center">
+        <div
+          className="flex justify-center items-center cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"
             width={25}

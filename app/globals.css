@@ -40,3 +40,55 @@
   width: 2rem;
   height: 2rem;
 }
+
+.Background-pink {
+  background: #ffe2e5;
+  height: 100vh;
+  width: 300px;
+  object-fit: contain;
+}
+
+.Background-green {
+  background: #dcfce7;
+  height: 100vh;
+  width: 300px;
+  object-fit: contain;
+}
+.Background-grey {
+  /* background: #f0fbff; */
+  background: #d6eaf2;
+  height: 100vh;
+  width: 300px;
+  object-fit: contain;
+}
+.Background-blue {
+  background: #0f1235;
+  height: 100vh;
+  width: 300px;
+  object-fit: contain;
+}
+
+.Background-purple {
+  background-color: #f3e8ff;
+  height: 100vh;
+  width: 300px;
+  object-fit: contain;
+}
+
+.ExportButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #0f3659;
+  cursor: pointer;
+  border: 1px solid #c3d3e2;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
