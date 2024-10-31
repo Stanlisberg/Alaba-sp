@@ -12,7 +12,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { SiGitconnected } from "react-icons/si";
 
-function page() {
+function Category() {
   const [date, setDate] = useState();
 
   const tableData = [
@@ -89,11 +89,7 @@ function page() {
     {
       title: "No of Products",
       dataIndex: "stock",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
   ];
 
@@ -120,30 +116,18 @@ function page() {
     {
       title: "Brand",
       dataIndex: "brand",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
     {
       title: "Price",
       dataIndex: "costPrice",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>&#8358;{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>₦{perm}</div>,
     },
 
     {
       title: "Stock",
       dataIndex: "stock",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
   ];
 
@@ -258,4 +242,4 @@ function page() {
   );
 }
 
-export default page;
+export default Category;

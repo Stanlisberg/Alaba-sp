@@ -12,7 +12,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { SiGitconnected } from "react-icons/si";
 
-function page() {
+function Customer() {
   const [date, setDate] = useState();
 
   const tableData = [
@@ -90,11 +90,7 @@ function page() {
     {
       title: "Last visit",
       dataIndex: "date",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
   ];
 
@@ -164,7 +160,10 @@ function page() {
             </div>
             <div>
               {customerInfo.map((item, index) => (
-                <div className="flex flex-col text-center mt-5 justify-center items-center gap-8">
+                <div
+                  key={index}
+                  className="flex flex-col text-center mt-5 justify-center items-center gap-8"
+                >
                   <div className="min-w-[50px] bg-[#11B666] h-[50px] rounded-[50%] items-center justify-center overflow-hidden">
                     <Image
                       src={item.image}
@@ -213,4 +212,4 @@ function page() {
   );
 }
 
-export default page;
+export default Customer;

@@ -16,19 +16,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { ExportButton } from "@/app/custom/export-comp";
 import dynamic from "next/dynamic";
-import { AreaChatComp } from "@/app/custom/area-chat-comp";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-function page() {
+function SalesReport() {
   const [date, setDate] = useState();
 
   const salesData = [
-    { date: "12th January, ‘24", sales: "Sales Report" },
-    { date: "12th January, ‘24", sales: "Sales Report" },
-    { date: "12th January, ‘24", sales: "Sales Report" },
-    { date: "12th January, ‘24", sales: "Sales Report" },
-    { date: "12th January, ‘24", sales: "Sales Report" },
-    { date: "12th January, ‘24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
+    { date: "12th January, 24", sales: "Sales Report" },
   ];
 
   const [state, setState] = useState({
@@ -113,7 +112,7 @@ function page() {
         <div className="flex px-10 justify-between items-center pt-5">
           <div>
             <h3 className="text-[1rem] text-[#05004E] font-[600]">
-              Today's Sales
+              Today&apos;s Sales
             </h3>
             <p className="text-[0.7rem] text-[#737791]">Sales Summary</p>
           </div>
@@ -200,7 +199,7 @@ function page() {
           <div className="flex px-10 justify-between items-center pt-5">
             <div>
               <h3 className="text-[1rem] text-[#05004E] font-[600]">
-                Today's Sales
+                Today&apos;s Sales
               </h3>
               <p className="text-[0.7rem] text-[#737791]">Sales Summary</p>
             </div>
@@ -218,7 +217,10 @@ function page() {
         <div className="w-[28%] bg-[#F8F9FA] px-4 py-6 rounded-lg">
           <h1 className="text-[1rem] text-[#05004E] font-[600]">Exports</h1>
           {salesData.map((item, index) => (
-            <div className="flex mt-2 flex-row justify-between items-center border-t pt-2 border-[#B6B6B6]">
+            <div
+              key={index}
+              className="flex mt-2 flex-row justify-between items-center border-t pt-2 border-[#B6B6B6]"
+            >
               <div className="text-[#425166] text-[14px]" key={index}>
                 {item.date}
               </div>
@@ -238,4 +240,4 @@ function page() {
   );
 }
 
-export default page;
+export default SalesReport;

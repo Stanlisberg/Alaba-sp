@@ -12,7 +12,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { SiGitconnected } from "react-icons/si";
 
-function page() {
+function Products() {
   const [date, setDate] = useState();
 
   const tableData = [
@@ -88,53 +88,33 @@ function page() {
     {
       title: "Category",
       dataIndex: "category",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
     {
       title: "Product Id",
       dataIndex: "product",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
     {
       title: "Brand",
       dataIndex: "brand",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
     {
       title: "Cost Price",
       dataIndex: "costPrice",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>&#8358;{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>₦{perm}</div>,
     },
 
     {
       title: "Selling Price",
       dataIndex: "sellingPrice",
-      render: (status) => <button>&#8358;{status}</button>,
+      render: (status) => <button>₦{status}</button>,
     },
     {
       title: "Stock",
       dataIndex: "stock",
-      render: (perm) => (
-        <div className={""}>
-          <div className={""}>{perm}</div>
-        </div>
-      ),
+      render: (perm) => <div className={""}>{perm}</div>,
     },
     {
       title: "Action",
@@ -223,4 +203,4 @@ function page() {
   );
 }
 
-export default page;
+export default Products;
