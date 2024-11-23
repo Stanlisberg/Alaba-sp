@@ -9,10 +9,11 @@ export const CustomSelect = ({
   errorMessage,
   value,
   style,
-  size
+  size,
+  className
 }) => {
   return (
-    <div className="">
+    <div className={className}>
       {labelText && <label className="">{labelText}</label>}
       <Select
         placeholder="Please select"

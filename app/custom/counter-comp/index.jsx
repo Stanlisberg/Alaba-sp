@@ -3,7 +3,7 @@ import React from "react";
 
 export const PinkCounter = ({ icon, count, text, subText, width = true }) => {
   return (
-    <div className="h-[160px] w-[200px] overflow-hidden rounded-[12px] ">
+    <div className="border border-[#ffe2e5] overflow-hidden rounded-[12px] min-w-[10rem] min-h-[8rem]">
       <div className="Background-pink">
         <div className="flex flex-col gap-1 px-6 py-6">
           <Image src={icon} width="35" height="20" />
@@ -18,7 +18,7 @@ export const PinkCounter = ({ icon, count, text, subText, width = true }) => {
 
 export const GreyCounter = ({ icon, count, text, subText, width = true }) => {
   return (
-    <div className="h-[160px] w-[200px] overflow-hidden rounded-[12px] ">
+    <div className="border border-[#dcfce7]  min-w-[5rem] min-h-[8rem] overflow-hidden rounded-[12px] ">
       <div className="Background-grey">
         <div className="flex flex-col gap-1 px-6 py-6">
           <Image src={icon} width="35" height="20" />
@@ -33,7 +33,7 @@ export const GreyCounter = ({ icon, count, text, subText, width = true }) => {
 
 export const BlueCounter = ({ icon, count, text, subText, width = true }) => {
   return (
-    <div className="h-[160px] w-[200px] overflow-hidden rounded-[12px] ">
+    <div className="border border-[#d6eaf2]  min-w-[10rem] min-h-[8rem] overflow-hidden rounded-[12px] ">
       <div className="Background-blue">
         <div className="flex flex-col gap-1 px-6 py-6">
           <Image src={icon} width="35" height="20" />
@@ -48,7 +48,7 @@ export const BlueCounter = ({ icon, count, text, subText, width = true }) => {
 
 export const GreenCounter = ({ icon, count, text, subText, width = true }) => {
   return (
-    <div className="h-[160px] w-[200px] overflow-hidden rounded-[12px] ">
+    <div className="border border-[#dcfce7]  min-w-[10rem] min-h-[8rem] overflow-hidden rounded-[12px] ">
       <div className="Background-green">
         <div className="flex flex-col gap-1 px-6 py-6">
           <Image src={icon} width="35" height="20" />
@@ -63,7 +63,7 @@ export const GreenCounter = ({ icon, count, text, subText, width = true }) => {
 
 export const PurpleCounter = ({ icon, count, text, subText, width = true }) => {
   return (
-    <div className="h-[160px] w-[200px] overflow-hidden rounded-[12px] ">
+    <div className="border border-[#f3e8ff] min-w-[10rem] min-h-[8rem] overflow-hidden rounded-[12px] ">
       <div className="Background-purple">
         <div className="flex flex-col gap-1 px-6 py-6">
           <Image src={icon} width="35" height="20" />

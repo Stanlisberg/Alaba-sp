@@ -33,10 +33,10 @@ function Home() {
         <FiMenu size="30" className="md:hidden" />
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center">
           <div className="cursor-pointer">How we work</div>
-          <Link href="/login">
+          <Link href="/">
             <div className="cursor-pointer">Sign up</div>
           </Link>
-          <Link href="/sales-report">
+          <Link href="/login">
             <button className="border-2 border-[#0f1235] py-1 px-5 rounded-lg">
               My Dashboard
             </button>

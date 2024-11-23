@@ -1,11 +1,46 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { loginUser } from "@/app/redux/services/auth/login";
+import { useDispatch, useSelector } from "react-redux";
+import { ImSpinner9 } from "react-icons/im";
+import { useLoginMutation } from "@/app/redux/services/auth/index.";
+import { showSuccessToast, showErrorToast } from "@/app/utils/toast";
+import { Loader } from "@/app/utils/loader";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function LandingPage() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const handleLogin = (e) => {
+    const payload = {
+      email: email,
+      password: password,
+    };
+
+    login(payload)
+      .unwrap()
+      .then((result) => {
+        console.log(result);
+        showSuccessToast(result?.message);
+        router.push("/sales-report");
+      })
+      .catch((error) => {
+        showSuccessToast(error?.data.message);
+        console.log(error);
+      });
+
+    e.preventDefault();
+  };
   return (
     <main className="max-w-full mx-auto">
       <nav className="my-10 max-w-[1200px] mx-auto flex py-2 justify-between items-center">
@@ -46,21 +81,32 @@ function LandingPage() {
               <p className="font-normal text-[14px]">Login to your dashboard</p>
             </div>
 
-            <form className="flex flex-col gap-14">
+            <form className="flex flex-col gap-14" onSubmit={handleLogin}>
               <div className="flex flex-col gap-2">
                 <input
                   className="py-3 px-6 bg-[#f0fbff] text-[0.8rem] rounded-lg border border-gray-300"
                   type="text"
                   placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <input
-                  className="py-3 px-6 bg-[#ececec] text-[0.8rem] rounded-lg border border-gray-300"
-                  type="text"
-                  placeholder="Password"
-                />
+                <div className=" border border-gray-300 bg-[#ececec] rounded-lg flex justify-between items-center">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="py-3 px-6 bg-[#ececec] text-[0.8rem] rounded-lg w-full outline-none"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="w-[20px] h-[20px] flex items-center justify-center border-none mr-2"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </button>
+                </div>
               </div>
-              <button className="py-3 px-6 bg-[#0f1235] text-white text-[0.8rem] rounded-lg border border-gray-300">
-                Login
+              <button className="Button py-3 px-6 bg-[#0f1235] text-white text-[0.8rem] rounded-lg border border-gray-300">
+                {isLoading ? <Loader /> : "Login"}
               </button>
             </form>
             <p className="text-end text-[13px] text-[#979797]">

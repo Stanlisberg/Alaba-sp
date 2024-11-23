@@ -43,36 +43,27 @@
 
 .Background-pink {
   background: #ffe2e5;
-  height: 100vh;
-  width: 300px;
-  object-fit: contain;
+  /* height: 100vh; */
+  width: 100%;
+  /* object-fit: contain; */
 }
 
 .Background-green {
   background: #dcfce7;
-  height: 100vh;
-  width: 300px;
-  object-fit: contain;
+  width: 100%;
 }
 .Background-grey {
-  /* background: #f0fbff; */
   background: #d6eaf2;
-  height: 100vh;
-  width: 300px;
-  object-fit: contain;
+  width: 100%;
 }
 .Background-blue {
   background: #0f1235;
-  height: 100vh;
-  width: 300px;
-  object-fit: contain;
+  width: 100%;
 }
 
 .Background-purple {
   background-color: #f3e8ff;
-  height: 100vh;
-  width: 300px;
-  object-fit: contain;
+  width: 100%;
 }
 
 .ExportButton {
@@ -91,4 +82,38 @@
     width: 16px;
     height: 16px;
   }
+}
+
+.Button {
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 8px;
+  text-align: center;
+  &:disabled {
+    opacity: 0.5;
+  }
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+}
+.loader {
+  margin: auto;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }

@@ -8,7 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import { GoGraph } from "react-icons/go";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { PiSquaresFour } from "react-icons/pi";
-import { FiUser } from "react-icons/fi";
+import { FiMenu, FiUser } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useRouter } from "next/navigation";
@@ -26,20 +26,20 @@ function Navbar() {
 
   return (
     <div className="max-w-full mx-auto bg-gray-200">
-      <nav className="w-full pl-[230px] pr-6 py-4 bg-[#F8F9FA] fixed top-0 z-10">
+      <nav className="w-full lg:pl-[230px] px-5 lg-px-0 pr-6 py-4 bg-[#F8F9FA] fixed top-0 z-10">
         <div className="flex justify-between items-center">
           <div className="text-[#151D48] text-xl font-[600]">
             Sales Analytics
           </div>
 
-          <div className="flex items-center bg-gray-200  border  w-[320px] rounded-lg pl-4 ml-20">
+          <div className="hidden md:flex items-center bg-gray-200  border  w-[320px] rounded-lg pl-4 ml-20">
             <FaSearch color="#5D5FEF" />
             <input
               className="px-2 py-2 text-[14px] outline-none border-none rounded-lg  bg-gray-200 text-[#737791]"
               placeholder="Search here..."
             />
           </div>
-          <div className="flex flex-row gap-4 justify-center items-center">
+          <div className="hidden md:flex flex-row gap-4 justify-center items-center">
             <Image
               src="https://res.cloudinary.com/dbg2z1svm/image/upload/v1729960871/United_bgje9d.svg"
               width="20"
@@ -48,11 +48,12 @@ function Navbar() {
             <div className="text-[#374557]">Eng(US)</div>
             <MdOutlineKeyboardArrowDown color="#A098AE" />
           </div>
-          <div className="flex flex-row gap-4 justify-center items-center">
+          <div className="ml-8 lg:ml-0 flex flex-row gap-4 justify-center items-center">
             <Image
               src="https://res.cloudinary.com/dbg2z1svm/image/upload/v1729961239/Notifications_cxriwm.svg"
               width="30"
               height="30"
+              className="hidden md:block"
             />
             <Image
               src="https://res.cloudinary.com/dbg2z1svm/image/upload/v1729961587/Rectangle_1393_wia2ar.png"
@@ -63,13 +64,14 @@ function Navbar() {
               <p className="font-[600] ">Frank</p>
               <p className="text-[11px]">Admin</p>
             </div>
-            <div className="mb-5">
+            <div className="mb-5 hidden lg:block">
               <MdOutlineKeyboardArrowDown color="#A098AE" />
             </div>
           </div>
+          <FiMenu size="30" className="md:hidden" />
         </div>
       </nav>
-      <div className="min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5">
+      <div className=" hidden lg:block min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5">
         <div
           className="flex justify-center items-center cursor-pointer"
           onClick={() => router.push("/")}
