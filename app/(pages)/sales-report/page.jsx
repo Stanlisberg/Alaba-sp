@@ -242,7 +242,7 @@ function SalesReport() {
             </div>
           ))}
           <div className="flex justify-center items-center">
-            <button className="bg-[#4256A6] text-[#fff] text-[14px] rounded-[10px] mt-4 px-12 py-1">
+            <button className="bg-[#4256A6] text-[#fff] text-[14px] rounded-[10px] mt-10 px-12 py-1">
               Load more
             </button>
           </div>

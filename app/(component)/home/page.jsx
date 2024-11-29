@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,8 +11,21 @@ import { FiMenu } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { GoGraph } from "react-icons/go";
+import { IoBagHandleOutline } from "react-icons/io5";
+import { PiSquaresFour } from "react-icons/pi";
+import { usePathname } from "next/navigation";
+import { FaTimes } from "react-icons/fa";
 
 function Home() {
+  const [navIcon, setNavIcon] = useState(true);
+  const pathname = usePathname();
+  const menuLinks = [
+    { name: "How we Work", href: "/", icon: <GoGraph /> },
+    { name: "Sign Up", href: "#signUp", icon: <IoBagHandleOutline /> },
+    { name: "Dashboard", href: "/login", icon: <PiSquaresFour /> },
+  ];
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -30,10 +42,25 @@ function Home() {
             className="w-[150px] object-cover"
           />
         </div>
-        <FiMenu size="30" className="md:hidden" />
+        <div className="pt-1 md:hidden ml-3 block cursor-pointer z-10">
+          {navIcon === true ? (
+            <FiMenu
+              size="30"
+              color="#0f1235"
+              onClick={() => setNavIcon(!navIcon)}
+            />
+          ) : (
+            <FaTimes
+              size="30"
+              color="#0f1235"
+              onClick={() => setNavIcon(!navIcon)}
+            />
+          )}
+        </div>
+        {/* <FiMenu size="30" className="md:hidden" /> */}
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center">
           <div className="cursor-pointer">How we work</div>
-          <Link href="/">
+          <Link href="#signUp">
             <div className="cursor-pointer">Sign up</div>
           </Link>
           <Link href="/login">
@@ -43,6 +70,49 @@ function Home() {
           </Link>
         </div>
       </nav>
+      <div
+        className={
+          navIcon === true
+            ? "hidden min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5"
+            : "md:hidden min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5 ease-in duration-700"
+        }
+      >
+        <div
+          className="flex justify-center items-center cursor-pointer"
+          onClick={() => router.push("/")}
+        >
+          <Image
+            src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"
+            width={25}
+            height={25}
+            alt="Dash"
+            className="w-[140px] object-cover  mb-2 mr-4"
+          />
+        </div>
+
+        {menuLinks.map((link, index) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              href={link.href}
+              key={index}
+              className=""
+              onClick={() => setNavIcon(!navIcon)}
+            >
+              <div
+                className={
+                  isActive
+                    ? "flex justify-start items-center text-[14px] gap-4 border bg-[#4256A6] text-white py-2 px-4 mx-6 my-4 rounded-lg "
+                    : "flex justify-start items-center  text-[14px] gap-4 text-[#B6B6B6] hover:text-white hover:border rounded-lg px-4 py-2 my-4 mx-6 hover:bg-[#4256A6] "
+                }
+              >
+                <p>{link.icon}</p>
+                <p>{link.name}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
       <section className="max-w-[1200px]  md:flex-row md:px-8 px-6 mt-20 flex flex-col gap-24 justify-center items-center mx-auto ">
         <div className="w-full text-start md:w-[60%]">
           <div className="hidden md:block text-4xl text-[#0f1235] font-[500]">
@@ -320,7 +390,7 @@ function Home() {
         </div>
       </section>
       <section className="bg-[#eccb8fe4] pt-16 pb-10 md:pr-20 gap-20 md:py-40 flex flex-col md:flex-row justify-center items-center">
-        <div data-aos="zoom-out">
+        <div data-aos="zoom-out" id="signUp">
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1728124085/phone_with_shadow_2x_1_azydhq.png"
             width={25}

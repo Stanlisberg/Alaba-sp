@@ -107,11 +107,12 @@ function Customer() {
 
   return (
     <Landing>
-      <div className=" flex justify-between items-center ">
+      <div className="flex flex-col mt-2 gap-4 md:flex-row lg:justify-between items-center ">
         <DatePickerComp
           value={date}
           onChange={(date) => setDate(date)}
-          style={{ width: "400px", fontSize: "16px" }}
+          style={{ fontSize: "16px" }}
+          className="w-[300px] lg:w-[400px]"
         />
         <CustomSelect
           labelText=""
@@ -128,10 +129,11 @@ function Customer() {
           options=""
           style={{ width: "280px" }}
           size="medium"
+          className="hidden md:block"
         />
       </div>
-      <div className="flex gap-4 justify-between items-center h-screen">
-        <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-[50%] h-full">
+      <div className="flex flex-col md:flex-row gap-4 md:justify-between md:items-center">
+        <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-full md:w-[50%] ">
           <div className="flex px-10 justify-between items-center pt-5">
             <div>
               <h3 className="text-[1rem] text-[#05004E] font-[600]">
@@ -148,7 +150,7 @@ function Customer() {
             />
           </div>
         </div>
-        <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-[50%] h-full">
+        <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-full md:w-[50%]">
           <div className="flex flex-col px-10 justify-between items-center pt-5">
             <div>
               <h3 className="text-[1rem] text-[#05004E] font-[600]">

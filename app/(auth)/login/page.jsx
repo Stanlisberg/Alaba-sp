@@ -43,7 +43,7 @@ function LandingPage() {
   };
   return (
     <main className="max-w-full mx-auto">
-      <nav className="my-10 max-w-[1200px] mx-auto flex py-2 justify-between items-center">
+      <nav className="my-10 max-w-[1200px] mx-auto flex py-2 pr-4 md:pr-0 justify-between items-center">
         <div
           className="flex justify-center items-center cursor-pointer"
           onClick={() => router.push("/")}
@@ -59,6 +59,13 @@ function LandingPage() {
         <div className="hidden text-sm font-bold md:flex flex-row text-[#0f1235] gap-6 justify-between items-center ">
           <div className="cursor-pointer">How we work</div>
           <div className="cursor-pointer">Sign up</div>
+          <Link href="/">
+            <button className="border-2 border-[#0f1235] py-1 px-5 rounded-lg">
+              Home
+            </button>
+          </Link>
+        </div>
+        <div className="flex text-sm font-bold md:hidden flex-row text-[#0f1235] gap-6 justify-between items-center ">
           <Link href="/">
             <button className="border-2 border-[#0f1235] py-1 px-5 rounded-lg">
               Home
