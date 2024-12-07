@@ -1,11 +1,19 @@
 export const SaveToLocalStorage = (key, item) => {
-  localStorage.setItem(key, JSON.stringify(item));
+  if (typeof window !== "undefined") {
+    const localStorageData = localStorage.setItem(key, JSON.stringify(item));
+
+    if (localStorageData) {
+      return localStorageData;
+    }
+  }
 };
 
 export const GetFromLocalStorage = (key) => {
-  const storageString = localStorage.getItem(key);
-  if (storageString) {
-    return JSON.parse(storageString);
+  if (typeof window !== "undefined") {
+    const storageString = localStorage.getItem(key);
+    if (storageString) {
+      return JSON.parse(storageString);
+    }
+    return null;
   }
-  return null;
 };

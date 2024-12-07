@@ -4,17 +4,11 @@ import React, { useState } from "react";
 import Landing from "@/app/(component)/dashboard/page";
 import { DatePickerComp } from "@/app/custom/date-picker";
 import { CustomSelect } from "@/app/custom/select-comp";
-import { CustomButton, ExportButton } from "@/app/custom/export-comp";
 import { Table } from "antd";
 import Image from "next/image";
-import { FiEye } from "react-icons/fi";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { FaPlus } from "react-icons/fa6";
-import { SiGitconnected } from "react-icons/si";
 
 function Customer() {
   const [date, setDate] = useState();
-
   const tableData = [
     {
       name: "John Doe",
