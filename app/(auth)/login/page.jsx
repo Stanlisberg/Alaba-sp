@@ -4,13 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { loginUser } from "@/app/redux/services/auth/login";
 import { useDispatch, useSelector } from "react-redux";
-import { ImSpinner9 } from "react-icons/im";
 import { useLoginMutation } from "@/app/redux/services/auth/index.";
 import { showSuccessToast, showErrorToast } from "@/app/utils/toast";
 import { Loader } from "@/app/utils/loader";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { SaveToLocalStorage } from "@/app/utils/helpers";
 
 function LandingPage() {
   const router = useRouter();
@@ -30,12 +29,17 @@ function LandingPage() {
     login(payload)
       .unwrap()
       .then((result) => {
+        SaveToLocalStorage("Username", result.data.first_name);
         console.log(result);
         showSuccessToast(result?.message);
-        router.push("/sales-report");
+        if (result.data.role !== "SalesPerson") {
+          router.push("/sales-report");
+        } else {
+          null;
+        }
       })
       .catch((error) => {
-        showSuccessToast(error?.data.message);
+        showErrorToast(error?.data.message);
         console.log(error);
       });
 

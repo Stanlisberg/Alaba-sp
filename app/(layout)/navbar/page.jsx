@@ -13,13 +13,14 @@ import { FiMenu, FiUser } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { GetFromLocalStorage } from "@/app/utils/helpers";
 
 function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [navIcon, setNavIcon] = useState(true);
+  const loggedInUser = GetFromLocalStorage("Username");
 
-  console.log(pathname);
   const menuLinks = [
     { name: "Sales Report", href: "/sales-report", icon: <GoGraph /> },
     { name: "Products", href: "/products", icon: <IoBagHandleOutline /> },
@@ -77,7 +78,7 @@ function Navbar() {
               height="30"
             />
             <div className="text-[14px] leading-[16px]">
-              <p className="font-[600] ">Frank</p>
+              <p className="font-[600] ">{loggedInUser}</p>
               <p className="text-[11px]">Admin</p>
             </div>
             <div className="mb-5 hidden lg:block">

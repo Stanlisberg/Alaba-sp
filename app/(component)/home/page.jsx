@@ -32,7 +32,7 @@ function Home() {
 
   return (
     <main className="max-w-full overflow-hidden mx-auto ">
-      <nav className="my-10 max-w-[1200px] mx-auto flex py-2 px-5 justify-between items-center">
+      <nav className="my-7 max-w-[1200px] mx-auto flex py-2 px-5 justify-between items-center">
         <div>
           <Image
             src="https://res.cloudinary.com/drtzfu730/image/upload/v1725082737/logo_1_4x_1_aw7rzz.svg"

@@ -93,14 +93,14 @@ function SalesReport() {
           value={date}
           onChange={(date) => setDate(date)}
           style={{ fontSize: "16px" }}
-          className="w-[300px] lg:w-[400px]"
+          className="w-[338px] lg:w-[400px]"
         />
         <CustomSelect
           labelText=""
           value={"Days"}
           errorMessage=""
           options=""
-          style={{ width: "280px" }}
+          className="w-[338px] lg:w-[400px]"
           size="medium"
         />
         <CustomSelect
@@ -108,9 +108,8 @@ function SalesReport() {
           value={"All Employee"}
           errorMessage=""
           options=""
-          style={{ width: "280px" }}
           size="medium"
-          className="hidden md:block"
+          className="hidden md:block w-[338px] lg:w-[400px]"
         />
       </div>
       <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8">
@@ -206,7 +205,7 @@ function SalesReport() {
           </Swiper>
         </div>
       </div>
-      <div className="lg:flex-row flex flex-col w-full mt-5 gap-3">
+      <div className="lg:flex-row flex flex-col w-full mt-5 gap-5">
         <div className="w-full lg:w-[72%] bg-[#F8F9FA] rounded-lg">
           <div className="flex px-10 justify-between items-center pt-5">
             <div>

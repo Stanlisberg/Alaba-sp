@@ -112,14 +112,14 @@ function Customer() {
           value={date}
           onChange={(date) => setDate(date)}
           style={{ fontSize: "16px" }}
-          className="w-[300px] lg:w-[400px]"
+          className="w-[338px] lg:w-[400px]"
         />
         <CustomSelect
           labelText=""
           value={"Days"}
           errorMessage=""
           options=""
-          style={{ width: "280px" }}
+          className="w-[338px] lg:w-[400px]"
           size="medium"
         />
         <CustomSelect
@@ -127,9 +127,8 @@ function Customer() {
           value={"All Employee"}
           errorMessage=""
           options=""
-          style={{ width: "280px" }}
           size="medium"
-          className="hidden md:block"
+          className="hidden md:block w-[338px] lg:w-[400px]"
         />
       </div>
       <div className="flex flex-col md:flex-row gap-4 md:justify-between md:items-center">

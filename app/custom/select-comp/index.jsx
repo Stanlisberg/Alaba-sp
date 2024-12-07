@@ -10,7 +10,7 @@ export const CustomSelect = ({
   value,
   style,
   size,
-  className
+  className,
 }) => {
   return (
     <div className={className}>
@@ -23,6 +23,7 @@ export const CustomSelect = ({
         value={value}
         style={style}
         size={size}
+        className={className}
       />
       {errorMessage && <p className="">{errorMessage}</p>}
     </div>
