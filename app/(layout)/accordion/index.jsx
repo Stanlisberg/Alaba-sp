@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { IoIosArrowRoundUp } from "react-icons/io";
@@ -11,7 +13,7 @@ function AccordionItem({ question, answer, isOpen = false, handleToggle }) {
         className="app-container flex justify-between items-start gap-3 cursor-pointer"
         onClick={handleToggle}
       >
-        <p className="text-white font-light text-base md:text-xl lg:text-[20px]">
+        <p className="text-white font-bold text-base md:text-xl lg:text-[20px]">
           {question}
         </p>
         <button
@@ -19,7 +21,7 @@ function AccordionItem({ question, answer, isOpen = false, handleToggle }) {
             isOpen ? "rotate-90" : ""
           }`}
         >
-          <IoIosArrowRoundUp size={35} />
+          <IoIosArrowRoundUp size={30} />
         </button>
       </div>
       <div
@@ -29,7 +31,7 @@ function AccordionItem({ question, answer, isOpen = false, handleToggle }) {
           height: isOpen ? accordionBodyRef.current.scrollHeight : "0px",
         }}
       >
-        <p className="py-5 text-white text-[17px] font-light max-w-[90%]">
+        <p className="py-5 text-white text-sm md:text-[16px] font-light max-w-[90%]">
           {answer}
         </p>
       </div>

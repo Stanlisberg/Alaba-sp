@@ -1,6 +1,13 @@
+import React, { useEffect } from "react";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <section className="max-w-[1200px]  md:flex-row md:px-8 px-6 mt-20 flex flex-col gap-24 justify-center items-center mx-auto ">
       <div className="w-full text-start md:w-[60%]">
