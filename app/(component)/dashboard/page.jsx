@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "@/app/(layout)/navbar/page";
+import Navbar from "@/app/(layout)/navbar";
 
 export default function Landing({ children }) {
   return (

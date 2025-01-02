@@ -20,9 +20,15 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { ExportButton } from "@/app/custom/export-comp";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import { useGetAnalyticsQuery } from "@/app/redux/services/auth/index.";
 
 function SalesReport() {
   const [date, setDate] = useState();
+  const { data: getAnalytics } = useGetAnalyticsQuery(
+    "ezegwukingston@gmail.com"
+  );
+
+  console.log(getAnalytics);
 
   const salesData = [
     { date: "12th January, 24", sales: "Sales Report" },
@@ -85,6 +91,8 @@ function SalesReport() {
       ],
     });
   }, []);
+
+  // console.log(getAnalytics);
 
   return (
     <Landing>

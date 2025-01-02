@@ -9,7 +9,7 @@ import { useLoginMutation } from "@/app/redux/services/auth/index.";
 import { showSuccessToast, showErrorToast } from "@/app/utils/toast";
 import { Loader } from "@/app/utils/loader";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { SaveToLocalStorage } from "@/app/utils/helpers";
+import { GetFromLocalStorage, SaveToLocalStorage } from "@/app/utils/helpers";
 
 function LandingPage() {
   const router = useRouter();
@@ -18,7 +18,7 @@ function LandingPage() {
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [loginUser, { isLoading }] = useLoginMutation();
 
   const handleLogin = (e) => {
     const payload = {
@@ -26,10 +26,11 @@ function LandingPage() {
       password: password,
     };
 
-    login(payload)
+    loginUser(payload)
       .unwrap()
       .then((result) => {
         SaveToLocalStorage("Username", result.data.first_name);
+        SaveToLocalStorage("Token", result.token);
         console.log(result);
         showSuccessToast(result?.message);
         if (result.data.role !== "SalesPerson") {
