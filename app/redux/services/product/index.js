@@ -1,14 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { GetFromLocalStorage } from "@/app/utils/helpers";
 
-export const authApi = createApi({
-  reducerPath: "authApi",
+export const productApi = createApi({
+  reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://alaba-gstm.onrender.com",
     prepareHeaders: (headers) => {
       // Get the token from the Redux store or localStorage
       const token = GetFromLocalStorage("Token");
-      console.log(token);
 
       if (token) {
         // Set the Authorization header
@@ -20,20 +19,19 @@ export const authApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    login: builder.mutation({
-      query: (body) => ({
-        url: "/alabapi/login/",
-        method: "POST",
-        body,
+    getProducts: builder.query({
+      query: (businessEmail) => ({
+        url: `/alabapi/products/${businessEmail}`,
+        method: "GET",
       }),
     }),
-    getAnalytics: builder.query({
-      query: (businessEmail) => ({
-        url: `/alabapi/daily_sales_profits/${businessEmail}`,
-        method: "GET",
+    deleteProduct: builder.query({
+      query: (businessEmail, id) => ({
+        url: `/alabapi/products/${businessEmail}/${id}`,
+        method: "DELETE",
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useGetAnalyticsQuery } = authApi;
+export const { useGetProductsQuery, useDeleteProductQuery } = productApi;

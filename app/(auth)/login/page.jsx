@@ -10,7 +10,7 @@ import { showSuccessToast, showErrorToast } from "@/app/utils/toast";
 import { Loader } from "@/app/utils/loader";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { GetFromLocalStorage, SaveToLocalStorage } from "@/app/utils/helpers";
-
+// u;
 function LandingPage() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ function LandingPage() {
       .then((result) => {
         SaveToLocalStorage("Username", result.data.first_name);
         SaveToLocalStorage("Token", result.token);
+        SaveToLocalStorage("Email", result.data.business_email);
         console.log(result);
         showSuccessToast(result?.message);
         if (result.data.role !== "SalesPerson") {

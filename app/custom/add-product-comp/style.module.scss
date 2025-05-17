@@ -1,0 +1,71 @@
+.AddModal {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #16161650;
+  .content {
+    position: absolute;
+    max-width: 600px;
+    width: 700px;
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+    border-radius: 12px;
+    background: #fff;
+    border: 0.5px solid #e0e2e7;
+    box-shadow: 0px 0px 2px 0px #16161650;
+
+    .Icon {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+    }
+
+    .Wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px 5px 30px 5px;
+      border-radius: 8px;
+      // border: 1px solid #dae0e6;
+      // box-shadow: 0px 2px 4px 0px #dae0e6;
+      width: 100%;
+
+      .Flex {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .AddModal {
+    .content {
+      width: 300px;
+      height: 100%;
+      .Wrap {
+        overflow-y: scroll;
+        padding: 10px 0px;
+        .Flex {
+          overflow: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          // border: 1px solid black;
+        }
+      }
+    }
+  }
+}

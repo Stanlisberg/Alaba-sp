@@ -1,0 +1,35 @@
+.InputComp {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 6px;
+  width: 100%;
+  .input {
+    width: 100%;
+    padding: 0px 10px;
+    height: 42px;
+    border-radius: 8px;
+    color: #161616;
+    border: 0.5px solid #e0e2e7;
+    &::placeholder {
+      color: #8e9bae;
+    }
+  }
+  .label {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #161616;
+    span {
+      color: red;
+    }
+  }
+  .error {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #ba1a1a;
+    text-align: left;
+  }
+}

@@ -13,9 +13,9 @@ export const ExportButton = ({ csvData, headers, fileName }) => {
   );
 };
 
-export const CustomButton = ({ style, name, icon }) => {
+export const CustomButton = ({ style, name, icon, onClick }) => {
   return (
-    <div className="flex gap2">
+    <div className="flex gap2" onClick={onClick}>
       <button
         style={style}
         className=" text-[#fff] text-[13px] rounded-md flex justify-center gap-2 items-center py-1 px-3"

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Landing from "@/app/(component)/dashboard/page";
 import { DatePickerComp } from "@/app/custom/date-picker";
 import { CustomSelect } from "@/app/custom/select-comp";
@@ -20,15 +20,15 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { ExportButton } from "@/app/custom/export-comp";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import ReactApexChart from "react-apexcharts";
 import { useGetAnalyticsQuery } from "@/app/redux/services/auth/index.";
 
 function SalesReport() {
   const [date, setDate] = useState();
+  const [analyticDate, setAnalyticDate] = useState();
   const { data: getAnalytics } = useGetAnalyticsQuery(
     "ezegwukingston@gmail.com"
   );
-
-  console.log(getAnalytics);
 
   const salesData = [
     { date: "12th January, 24", sales: "Sales Report" },
@@ -38,6 +38,22 @@ function SalesReport() {
     { date: "12th January, 24", sales: "Sales Report" },
     { date: "12th January, 24", sales: "Sales Report" },
   ];
+
+  console.log(getAnalytics?.data);
+
+  const { dateData, totalSales, totalProfit } = useMemo(() => {
+    if (getAnalytics?.data) {
+      const dateData = getAnalytics.data.map((item) => item.date);
+      const totalSales = getAnalytics.data.map((item) => item.total_sales);
+      const totalProfit = getAnalytics.data.map((item) => item.total_profit);
+      return { dateData, totalSales, totalProfit };
+    }
+    return { dateData: [], totalSales: [], totalProfit: [] };
+  }, [getAnalytics?.data]);
+
+  // console.log("date:", dateData);
+  // console.log("sales:", totalSales);
+  // console.log("profit:", totalProfit);
 
   const [state, setState] = useState({
     options: {
@@ -66,7 +82,17 @@ function SalesReport() {
           id: "currency-rate-graph",
         },
         xaxis: {
-          categories: ["2020", "2021", "2022", "2023"],
+          // categories: [
+          //   "2020",
+          //   "2021",
+          //   "2022",
+          //   "2023",
+          //   "2024",
+          //   "2025",
+          //   "2026",
+          //   "2027",
+          // ],
+          categories: dateData,
         },
         stroke: {
           curve: "smooth",
@@ -74,14 +100,33 @@ function SalesReport() {
         colors: ["#7041de", "#3CD856", "#EF4444"],
       },
       series: [
+        // {
+        //   name: "Total Sales",
+        //   data: [100, 300, 300, 600],
+        // },
+
+        // {
+        //   name: "Total Profit",
+        //   data: [200, 900, 500, 500],
+        // },
+
+        // {
+        //   name: "Customer Satisfaction",
+        //   data: [200, 700, 300, 900],
+        // },
         {
-          name: "Gross Sales",
-          data: [600, 400, 700, 300],
+          name: "Total Sales",
+          data: totalSales,
         },
 
+        // {
+        //   name: "Total Profit",
+        //   data: totalProfit,
+        // },
+
         {
-          name: "Net Sales",
-          data: [400, 990, 500, 200],
+          name: "Total Profit",
+          data: [200, 900, 500, 500],
         },
 
         {
@@ -92,7 +137,31 @@ function SalesReport() {
     });
   }, []);
 
-  // console.log(getAnalytics);
+  // useEffect(() => {
+  //   if (getAnalytics) {
+  //     const categories = getAnalytics?.data.map((_item) => _item.total_profit);
+  //     const data = getAnalytics?.data.map((_item) => _item.total_sales);
+
+  //     console.log("sales:", data, "profit:", categories);
+
+  //     setState((prevState) => ({
+  //       ...prevState,
+  //       options: {
+  //         ...prevState.options,
+  //         xaxis: {
+  //           ...prevState.options.xaxis,
+  //           categories: categories,
+  //         },
+  //       },
+  //       series: [
+  //         {
+  //           ...prevState.series[0],
+  //           data: data,
+  //         },
+  //       ],
+  //     }));
+  //   }
+  // }, [getAnalytics]);
 
   return (
     <Landing>
