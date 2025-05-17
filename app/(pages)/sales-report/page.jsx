@@ -51,10 +51,6 @@ function SalesReport() {
     return { dateData: [], totalSales: [], totalProfit: [] };
   }, [getAnalytics?.data]);
 
-  // console.log("date:", dateData);
-  // console.log("sales:", totalSales);
-  // console.log("profit:", totalProfit);
-
   const [state, setState] = useState({
     options: {
       chart: {
