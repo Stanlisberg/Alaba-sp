@@ -24,7 +24,6 @@ import { useGetAnalyticsQuery } from "@/app/redux/services/auth/index.";
 
 function SalesReport() {
   const [date, setDate] = useState();
-  const [analyticDate, setAnalyticDate] = useState();
   const { data: getAnalytics } = useGetAnalyticsQuery(
     "ezegwukingston@gmail.com"
   );
@@ -38,16 +37,15 @@ function SalesReport() {
     { date: "12th January, 24", sales: "Sales Report" },
   ];
 
-  console.log(getAnalytics?.data);
-
   const { dateData, totalSales, totalProfit } = useMemo(() => {
-    if (getAnalytics?.data) {
-      const dateData = getAnalytics.data.map((item) => item.date);
-      const totalSales = getAnalytics.data.map((item) => item.total_sales);
-      const totalProfit = getAnalytics.data.map((item) => item.total_profit);
-      return { dateData, totalSales, totalProfit };
+    if (!getAnalytics?.data || Array.isArray(getAnalytics?.data)) {
+      return { dateData: [], totalSales: [], totalProfit: [] };
     }
-    return { dateData: [], totalSales: [], totalProfit: [] };
+
+    const dateData = getAnalytics.data.map((item) => item.date);
+    const totalSales = getAnalytics.data.map((item) => item.total_sales);
+    const totalProfit = getAnalytics.data.map((item) => item.total_profit);
+    return { dateData, totalSales, totalProfit };
   }, [getAnalytics?.data]);
 
   const [state, setState] = useState({
@@ -77,17 +75,17 @@ function SalesReport() {
           id: "currency-rate-graph",
         },
         xaxis: {
-          // categories: [
-          //   "2020",
-          //   "2021",
-          //   "2022",
-          //   "2023",
-          //   "2024",
-          //   "2025",
-          //   "2026",
-          //   "2027",
-          // ],
-          categories: dateData,
+          categories: [
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+          ],
+          // categories: dateData,
         },
         stroke: {
           curve: "smooth",
@@ -95,32 +93,15 @@ function SalesReport() {
         colors: ["#7041de", "#3CD856", "#EF4444"],
       },
       series: [
-        // {
-        //   name: "Total Sales",
-        //   data: [100, 300, 300, 600],
-        // },
-
-        // {
-        //   name: "Total Profit",
-        //   data: [200, 900, 500, 500],
-        // },
-
-        // {
-        //   name: "Customer Satisfaction",
-        //   data: [200, 700, 300, 900],
-        // },
         {
           name: "Total Sales",
-          data: totalSales,
+          // data: totalSales,
+          data: [100, 300, 300, 600],
         },
-
-        // {
-        //   name: "Total Profit",
-        //   data: totalProfit,
-        // },
 
         {
           name: "Total Profit",
+          // data: totalProfit,
           data: [200, 900, 500, 500],
         },
 
@@ -131,32 +112,6 @@ function SalesReport() {
       ],
     });
   }, []);
-
-  // useEffect(() => {
-  //   if (getAnalytics) {
-  //     const categories = getAnalytics?.data.map((_item) => _item.total_profit);
-  //     const data = getAnalytics?.data.map((_item) => _item.total_sales);
-
-  //     console.log("sales:", data, "profit:", categories);
-
-  //     setState((prevState) => ({
-  //       ...prevState,
-  //       options: {
-  //         ...prevState.options,
-  //         xaxis: {
-  //           ...prevState.options.xaxis,
-  //           categories: categories,
-  //         },
-  //       },
-  //       series: [
-  //         {
-  //           ...prevState.series[0],
-  //           data: data,
-  //         },
-  //       ],
-  //     }));
-  //   }
-  // }, [getAnalytics]);
 
   return (
     <Landing>
