@@ -186,7 +186,7 @@ function SalesReport() {
                 }
                 count={"$1k"}
                 text={"Gross Sales"}
-                subText={"+8% from yesterday"}
+                subText={"+4% from yesterday"}
               />
             </SwiperSlide>
             <SwiperSlide>
