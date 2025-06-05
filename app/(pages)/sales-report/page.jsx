@@ -194,7 +194,7 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236158/Icon_1_fjyhv1.svg"
                 }
-                count={"$4k"}
+                count={"$8k"}
                 text={"Refund"}
                 subText={"+4% refunded"}
               />
