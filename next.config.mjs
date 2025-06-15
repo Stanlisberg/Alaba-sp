@@ -3,7 +3,7 @@ const nextConfig = {
   sassOptions: {
     additionalData: `$var: red;`,
   },
-  output: "export",
+  // output: "export",
   images: {
     unoptimized: true,
   },

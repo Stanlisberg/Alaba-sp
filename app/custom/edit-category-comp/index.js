@@ -7,31 +7,34 @@ import { CustomButton } from "../button-comp";
 import {
   useCreateCategoryMutation,
   useGetSingleCategoryQuery,
+  useUpdateCategoryMutation,
 } from "@/app/redux/services/store";
 import { GetFromLocalStorage } from "@/app/utils/helpers";
 import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 
-export const EditCategoryModal = ({ onClickCancel, id }) => {
+export const EditCategoryModal = ({ onClickCancel, name, id, refetch }) => {
   const business_email = GetFromLocalStorage("Email");
   const { data: getSingleCategory } = useGetSingleCategoryQuery({
     business_email,
     id,
   });
-  const [createCategory, { isLoading }] = useCreateCategoryMutation();
+  const [updateCategory, { isLoading }] = useUpdateCategoryMutation();
 
   const onSubmit = (values) => {
     const payload = {
       name: values.name,
       color: values.color,
       business_email: business_email,
+      categName: name,
     };
 
-    createCategory(payload)
+    updateCategory(payload)
       .unwrap()
       .then((result) => {
         showSuccessToast(result?.message);
         console.log(result);
-        onClickClose();
+        onClickCancel();
+        refetch();
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +60,7 @@ export const EditCategoryModal = ({ onClickCancel, id }) => {
           <FaTimes size={22} color="#0f1235" onClick={onClickCancel} />
         </div>
         <div className="text-[20px] md:text-[22px] font-[600]">
-          Add New Category
+          Edit Category
         </div>
         <div className={styles.Wrap}>
           <div className={styles.Flex}>
@@ -69,14 +72,14 @@ export const EditCategoryModal = ({ onClickCancel, id }) => {
             />
             <CustomInput
               labelText="Color"
-              placeholder={"Enter yellow"}
+              placeholder={"Enter color"}
               value={values.brand}
               onChange={handleChange("color")}
             />
           </div>
           <CustomButton
             className="mt-6"
-            text={"Add Category"}
+            text={"Edit Category"}
             onClick={handleSubmit}
             isLoading={isLoading}
           />

@@ -8,7 +8,7 @@ import { useCreateCategoryMutation } from "@/app/redux/services/store";
 import { GetFromLocalStorage } from "@/app/utils/helpers";
 import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 
-export const AddCategoryModal = ({ onClickClose }) => {
+export const AddCategoryModal = ({ onClickClose, refetch }) => {
   const business_email = GetFromLocalStorage("Email");
   const [createCategory, { isLoading }] = useCreateCategoryMutation();
 
@@ -19,12 +19,15 @@ export const AddCategoryModal = ({ onClickClose }) => {
       business_email: business_email,
     };
 
+    console.log(payload);
+
     createCategory(payload)
       .unwrap()
       .then((result) => {
         showSuccessToast(result?.message);
         console.log(result);
         onClickClose();
+        refetch();
       })
       .catch((error) => {
         console.log(error);

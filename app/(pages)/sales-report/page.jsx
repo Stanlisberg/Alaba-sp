@@ -21,12 +21,19 @@ import { ExportButton } from "@/app/custom/export-comp";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useGetAnalyticsQuery } from "@/app/redux/services/auth/index.";
+import { GetFromLocalStorage } from "@/app/utils/helpers";
 
 function SalesReport() {
   const [date, setDate] = useState();
-  const { data: getAnalytics } = useGetAnalyticsQuery(
-    "ezegwukingston@gmail.com"
-  );
+  // const { data: getAnalytics } = useGetAnalyticsQuery(
+  //   "ezegwukingston@gmail.com"
+  // );
+  const business_email = GetFromLocalStorage("Email");
+  const token = GetFromLocalStorage("Token");
+
+  console.log(token);
+
+  // console.log(getAnalytics);
 
   const salesData = [
     { date: "12th January, 24", sales: "Sales Report" },
@@ -37,80 +44,150 @@ function SalesReport() {
     { date: "12th January, 24", sales: "Sales Report" },
   ];
 
-  const { dateData, totalSales, totalProfit } = useMemo(() => {
-    if (!getAnalytics?.data || Array.isArray(getAnalytics?.data)) {
-      return { dateData: [], totalSales: [], totalProfit: [] };
-    }
+  // const { dateData, totalSales, totalProfit } = useMemo(() => {
+  //   // if (!getAnalytics?.data || Array.isArray(getAnalytics?.data)) {
+  //   //   return { dateData: [], totalSales: [], totalProfit: [] };
+  //   // }
 
-    const dateData = getAnalytics.data.map((item) => item.date);
-    const totalSales = getAnalytics.data.map((item) => item.total_sales);
-    const totalProfit = getAnalytics.data.map((item) => item.total_profit);
-    return { dateData, totalSales, totalProfit };
-  }, [getAnalytics?.data]);
+  //   const dateData = getAnalytics?.data?.map((item) => item.date);
+  //   const totalSales = getAnalytics?.data?.map((item) => item.total_sales);
+  //   const totalProfit = getAnalytics?.data?.map((item) => item.total_profit);
+  //   return { dateData, totalSales, totalProfit };
+  // }, [getAnalytics?.data]);
 
-  const [state, setState] = useState({
-    options: {
-      chart: {
-        id: "currency-rate-graph",
-      },
-      xaxis: {
-        categories: [],
-      },
-      stroke: {
-        curve: "smooth",
-      },
+  // const dateData = getAnalytics?.data?.map((item) => item.date);
+  // const totalSales = getAnalytics?.data?.map((item) => item.total_sales);
+  // const totalProfit = getAnalytics?.data?.map((item) => item.total_profit);
+
+  // console.log(dateData);
+  // console.log(totalSales);
+  // console.log(totalProfit);
+
+  // const [state, setState] = useState({
+  //   options: {
+  //     chart: {
+  //       id: "currency-rate-graph",
+  //     },
+  //     xaxis: {
+  //       categories: [],
+  //     },
+  //     stroke: {
+  //       curve: "smooth",
+  //     },
+  //   },
+  //   series: [
+  //     {
+  //       name: "series-1",
+  //       data: [],
+  //     },
+  //   ],
+  // });
+
+  // useEffect(() => {
+  //   setState({
+  //     options: {
+  //       chart: {
+  //         id: "currency-rate-graph",
+  //       },
+  //       xaxis: {
+  //         // categories: [
+  //         //   "2020-20-20",
+  //         //   "2021-02-04",
+  //         //   "2022-10-05",
+  //         //   "2023",
+  //         //   "2024",
+  //         //   "2025",
+  //         //   "2026",
+  //         //   "2027",
+  //         // ],
+  //         categories: dateData,
+  //       },
+  //       stroke: {
+  //         curve: "smooth",
+  //       },
+  //       colors: ["#7041de", "#3CD856", "#EF4444"],
+  //     },
+  //     series: [
+  //       {
+  //         name: "Total Sales",
+  //         // data: totalSales,
+  //         data: [100, 300],
+  //       },
+
+  //       {
+  //         name: "Total Profit",
+  //         // data: totalProfit,
+  //         data: [200, 900],
+  //       },
+
+  //       {
+  //         name: "Customer Satisfaction",
+  //         // data: [200, 700, 300, 900],s
+  //       },
+  //     ],
+  //   });
+  // }, []);
+
+  // console.log(totalProfit);
+  // console.log(totalSales);
+  // console.log(dateData);
+
+  const [series, setSeries] = useState([]);
+  const [options, setOptions] = useState({
+    chart: {
+      id: "api-data-chart",
+      toolbar: { show: true },
     },
-    series: [
-      {
-        name: "series-1",
-        data: [],
-      },
-    ],
+    xaxis: {
+      categories: [],
+    },
+    stroke: { curve: "smooth" },
+    dataLabels: { enabled: false },
+    // title: {
+    //   text: "API Data Chart",
+    //   align: "center",
+    //   style: { fontSize: "20px" },
+    // },
   });
 
   useEffect(() => {
-    setState({
-      options: {
-        chart: {
-          id: "currency-rate-graph",
-        },
-        xaxis: {
-          categories: [
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-          ],
-          // categories: dateData,
-        },
-        stroke: {
-          curve: "smooth",
-        },
-        colors: ["#7041de", "#3CD856", "#EF4444"],
-      },
-      series: [
-        {
-          name: "Total Sales",
-          // data: totalSales,
-          data: [100, 300, 300, 600],
-        },
+    async function fetchData() {
+      try {
+        const url = `https://alaba-gstm.onrender.com/alabapi/daily_sales_profits/${business_email}/`;
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        };
+        const analytics = await fetch(url, {
+          method: "GET",
+          headers,
+        });
 
-        {
-          name: "Total Profit",
-          // data: totalProfit,
-          data: [200, 900, 500, 500],
-        },
+        const responseData = await analytics.json();
 
-        {
-          name: "Customer Satisfaction",
-          data: [200, 700, 300, 900],
-        },
-      ],
-    });
+        // Assuming the API returns an array of objects: { label: string, value: number }
+        const date = responseData?.data.map((item) => item.date);
+        const totalSales = responseData?.data.map((item) => item.total_sales);
+        const totalProfit = responseData?.data.map((item) => item.total_profit);
+
+        setSeries([
+          { name: "Total Sales", data: totalSales },
+          { name: "Total Profit", data: totalProfit },
+        ]);
+        setOptions((prev) => ({
+          ...prev,
+          xaxis: { categories: date },
+        }));
+
+        console.log(date);
+        console.log(totalSales);
+        console.log(totalProfit);
+      } catch (error) {
+        console.error("Error fetching API data:", error);
+      }
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -244,12 +321,7 @@ function SalesReport() {
             <ExportButton fileName={"Staff List"} csvData={""} headers={""} />
           </div>
           <div className="mt-4">
-            <Chart
-              options={state.options}
-              series={state.series}
-              type="line"
-              height={200}
-            />
+            <Chart options={options} series={series} type="line" height={200} />
           </div>
         </div>
         <div className="w-full lg:w-[28%] bg-[#F8F9FA] px-4 py-6 rounded-lg">

@@ -15,7 +15,7 @@ import { GetFromLocalStorage } from "@/app/utils/helpers";
 import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 import { PricingTypeData } from "./data";
 
-export const EditProductModal = ({ onClickCancel, id }) => {
+export const EditProductModal = ({ onClickCancel, id, refetch }) => {
   const business_email = GetFromLocalStorage("Email");
   const { data: getCategories } = useGetCategoriesQuery(business_email);
   const { data: getSingleProduct } = useGetSingleProductsQuery({
@@ -56,7 +56,8 @@ export const EditProductModal = ({ onClickCancel, id }) => {
       .then((result) => {
         showSuccessToast(result?.message);
         console.log(result);
-        onClickClose();
+        onClickCancel();
+        refetch();
       })
       .catch((error) => {
         console.log(error);

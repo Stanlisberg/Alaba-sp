@@ -23,7 +23,6 @@ import { EditProductModal } from "@/app/custom/edit-product-comp";
 import { useRouter } from "next/navigation";
 
 function Products() {
-  const router = useRouter();
   const [productId, setProductId] = useState();
   const [date, setDate] = useState();
   const [productData, setProductData] = useState("");
@@ -33,8 +32,11 @@ function Products() {
   const [removeModal, setRemoveModal] = useState(false);
   const business_email = GetFromLocalStorage("Email");
 
-  const { data: getProducts, isLoading: productLoading } =
-    useGetProductsQuery(business_email);
+  const {
+    data: getProducts,
+    isLoading: productLoading,
+    refetch,
+  } = useGetProductsQuery(business_email);
   const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
 
   const onClickClose = () => {
@@ -52,6 +54,7 @@ function Products() {
       .unwrap()
       .then((result) => {
         console.log(result);
+        refetch();
         setRemoveModal(!removeModal);
         showSuccessToast(result?.message);
       })
@@ -217,9 +220,15 @@ function Products() {
           isLoading={isDeleting}
         />
       )}
-      {addModal && <AddProductModal onClickClose={onClickClose} />}
+      {addModal && (
+        <AddProductModal onClickClose={onClickClose} refetch={refetch} />
+      )}
       {editModal && (
-        <EditProductModal onClickCancel={onClickCancel} id={productId} />
+        <EditProductModal
+          onClickCancel={onClickCancel}
+          id={productId}
+          refetch={refetch}
+        />
       )}
     </>
   );

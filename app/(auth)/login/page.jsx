@@ -4,16 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "@/app/redux/services/auth/index.";
 import { showSuccessToast, showErrorToast } from "@/app/utils/toast";
 import { Loader } from "@/app/utils/loader";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { GetFromLocalStorage, SaveToLocalStorage } from "@/app/utils/helpers";
-// u;
+import { SaveToLocalStorage } from "@/app/utils/helpers";
+import Cookies from "js-cookie";
+
 function LandingPage() {
   const router = useRouter();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
@@ -29,16 +28,24 @@ function LandingPage() {
     loginUser(payload)
       .unwrap()
       .then((result) => {
+        Cookies.set("token", result.token, {
+          expires: 7, // Cookie expires in 7 days
+          path: "/", // Available across the app
+          secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+          sameSite: "Strict", // Prevent CSRF
+        });
         SaveToLocalStorage("Username", result.data.first_name);
         SaveToLocalStorage("Token", result.token);
         SaveToLocalStorage("Email", result.data.business_email);
         console.log(result);
         showSuccessToast(result?.message);
-        if (result.data.role !== "SalesPerson") {
-          router.push("/sales-report");
-        } else {
-          null;
-        }
+        router.push("/sales-report");
+        // console.log(result)
+        // if (result.data.role !== "SalesPerson") {
+        //   router.push("/sales-report");
+        // } else {
+        //   null;
+        // }
       })
       .catch((error) => {
         showErrorToast(error?.data.message);

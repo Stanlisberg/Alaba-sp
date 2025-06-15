@@ -6,41 +6,51 @@ import { DatePickerComp } from "@/app/custom/date-picker";
 import { CustomSelect } from "@/app/custom/select-comp";
 import { CustomButton, ExportButton } from "@/app/custom/export-comp";
 import { Table } from "antd";
-import Image from "next/image";
-import { FiEye } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { SiGitconnected } from "react-icons/si";
-import { useGetCategoriesQuery } from "@/app/redux/services/store";
+import {
+  useDeleteCategoryMutation,
+  useGetCategoriesQuery,
+} from "@/app/redux/services/store";
 import { VscEdit } from "react-icons/vsc";
 import { DeleteModal } from "@/app/custom/delete-comp";
 import { AddCategoryModal } from "@/app/custom/add-category-comp";
 import { EditCategoryModal } from "@/app/custom/edit-category-comp";
+import { GetFromLocalStorage } from "@/app/utils/helpers";
+import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 
 function Category() {
   const [date, setDate] = useState();
   const [addModal, setAddModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [categoryId, setCategoryId] = useState("");
-  const [removeModal, setRemoveModal] = useState(false);
-  const [categoryData, setCategoryData] = useState({ id: "" });
+  const [categoryName, setCategoryName] = useState("");
+  const [categName, setCategName] = useState("");
+  const business_email = GetFromLocalStorage("Email");
 
-  const {
-    data: getCategories,
-    isLoading,
-    isFetching,
-  } = useGetCategoriesQuery("ezegwukingston@gmail.com");
+  const { data: getCategories, refetch } =
+    useGetCategoriesQuery(business_email);
+  const [deleteCategory, { isLoading: isDeleting }] =
+    useDeleteCategoryMutation();
 
   const onClickClose = () => {
     setAddModal(!addModal);
   };
 
-  const onClickCancel = () => {
-    setEditModal(!editModal);
+  const handleDelete = () => {
+    deleteCategory({ business_email, categName })
+      .unwrap()
+      .then((result) => {
+        console.log(result.message);
+        refetch();
+        setDeleteModal(!deleteModal);
+        showSuccessToast(result?.message);
+      })
+      .catch((error) => {
+        showErrorToast(error?.data.message);
+      });
   };
-
-  console.log(getCategories);
 
   const tableData = useMemo(() => {
     return (
@@ -58,23 +68,12 @@ function Category() {
     );
   }, [getCategories?.data]);
 
-  console.log(getCategories?.data);
-
   const categoryTable = [
     {
       title: "Category Name",
       dataIndex: "name",
       render: (name, content) => (
         <div className="flex items-center gap-2">
-          {/* <div className="min-w-[50px] bg-[#e0e2e7] h-[50px] rounded-[50%] items-center justify-center overflow-hidden">
-            <Image
-              src={content.profile}
-              alt=""
-              width={50}
-              height={50}
-              className="object-contain"
-            />
-          </div> */}
           <p className="text-[15px] leading-[20px]">{name}</p>
         </div>
       ),
@@ -88,7 +87,7 @@ function Category() {
     {
       title: "Color",
       dataIndex: "color",
-      render: (perm) => <div className={""}>₦{perm}</div>,
+      render: (perm) => <div className={""}>{perm}</div>,
     },
 
     {
@@ -99,17 +98,17 @@ function Category() {
     {
       title: "Action",
       dataIndex: "id",
-      render: (content) => (
+      render: (name, content) => (
         <div className="flex gap-2 cursor-pointer">
           <VscEdit
             onClick={() => {
               setEditModal(!editModal);
-              setCategoryId(content);
+              setCategoryName(content.name);
             }}
           />
           <RiDeleteBinLine
             onClick={() => {
-              setCategoryData({ id: content });
+              setCategName(content.name);
               setDeleteModal(true);
             }}
           />
@@ -147,7 +146,7 @@ function Category() {
         </div>
         {/* <div className="flex flex-col md:flex-row md:justify-between gap-4 justify-between items-center"> */}
         <div className="flex w-full">
-          <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-full md:w-[50%]">
+          <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-full md:w-[100%]">
             <div className="flex flex-col gap-5 md:flex-row px-10 md:justify-between md:items-center pt-5">
               <div>
                 <h3 className="text-[1rem] text-[#05004E] font-[600]">
@@ -212,14 +211,21 @@ function Category() {
         <DeleteModal
           deleteTitle={"Category"}
           deleteItem={"Category"}
-          onClickDelete={() => {}}
+          onClickDelete={handleDelete}
           onClickClose={() => setDeleteModal(false)}
-          isLoading={""}
+          isLoading={isDeleting}
         />
       )}
-      {addModal && <AddCategoryModal onClickClose={onClickClose} />}
+      {addModal && (
+        <AddCategoryModal onClickClose={onClickClose} refetch={refetch} />
+      )}
       {editModal && (
-        <EditCategoryModal onClickCancel={onClickCancel} id={categoryId} />
+        <EditCategoryModal
+          onClickCancel={() => setEditModal(!editModal)}
+          name={categoryName}
+          id={categName}
+          refetch={refetch}
+        />
       )}
     </>
   );

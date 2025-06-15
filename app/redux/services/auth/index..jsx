@@ -27,6 +27,13 @@ export const authApi = createApi({
         body,
       }),
     }),
+    logout: builder.mutation({
+      query: (body) => ({
+        url: "/alabapi/logout/",
+        method: "POST",
+        body,
+      }),
+    }),
     getAnalytics: builder.query({
       query: (businessEmail) => ({
         url: `/alabapi/daily_sales_profits/${businessEmail}`,
@@ -36,4 +43,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useGetAnalyticsQuery } = authApi;
+export const { useLoginMutation, useGetAnalyticsQuery, useLogoutMutation } = authApi;

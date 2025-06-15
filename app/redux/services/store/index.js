@@ -33,15 +33,15 @@ export const storeApi = createApi({
     }),
     createProduct: builder.mutation({
       query: (data) => ({
-        url: `/alabapi/products/${data.business_email}`,
+        url: `/alabapi/products/${data.business_email}/`,
         method: "POST",
         body: data,
       }),
     }),
     updateProduct: builder.mutation({
       query: (data) => ({
-        url: `/alabapi/products/${data.business_email}/${data.id}`,
-        method: "PUT",
+        url: `/alabapi/products/${data.business_email}/${data.id}/`,
+        method: "PATCH",
         body: data,
       }),
     }),
@@ -65,15 +65,22 @@ export const storeApi = createApi({
     }),
     createCategory: builder.mutation({
       query: (data) => ({
-        url: `/alabapi/categories/${data.business_email}`,
+        url: `/alabapi/categories/${data.business_email}/`,
         method: "POST",
+        body: data,
       }),
     }),
     updateCategory: builder.mutation({
       query: (data) => ({
-        url: `/alabapi/categories/${data.business_email}/${data.id}`,
-        method: "PUT",
+        url: `/alabapi/categories/${data.business_email}/${data.categName}/`,
+        method: "PATCH",
         body: data,
+      }),
+    }),
+    deleteCategory: builder.mutation({
+      query: ({ business_email, categName }) => ({
+        url: `/alabapi/categories/${business_email}/${categName}/`,
+        method: "DELETE",
       }),
     }),
   }),
@@ -89,4 +96,5 @@ export const {
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
   useGetSingleCategoryQuery,
+  useDeleteCategoryMutation,
 } = storeApi;

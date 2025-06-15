@@ -12,22 +12,60 @@ import { PiSquaresFour } from "react-icons/pi";
 import { FiMenu, FiUser } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
 import { useRouter } from "next/navigation";
 import { GetFromLocalStorage } from "@/app/utils/helpers";
+import Cookies from "js-cookie";
+import { useLogoutMutation } from "@/app/redux/services/auth/index.";
+import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 
 function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [navIcon, setNavIcon] = useState(true);
+  const business_email = GetFromLocalStorage("Email");
   const loggedInUser = GetFromLocalStorage("Username");
+  const [logout] = useLogoutMutation();
 
   const menuLinks = [
     { name: "Sales Report", href: "/sales-report", icon: <GoGraph /> },
     { name: "Products", href: "/products", icon: <IoBagHandleOutline /> },
     { name: "Category", href: "/category", icon: <PiSquaresFour /> },
     { name: "Customer", href: "/customer", icon: <FiUser /> },
-    { name: "Settings", href: "/setting", icon: <IoSettingsOutline /> },
+    // { name: "Settings", href: "/setting", icon: <IoSettingsOutline /> },
+    { name: "Logout", href: "#", icon: <TbLogout /> },
   ];
+
+  const handleMenuClick = (link) => {
+    if (link.name === "Logout") {
+      handleLogout();
+    } else {
+      router.push(link.href);
+    }
+  };
+
+  const handleLogout = (e) => {
+    const payload = {
+      email: business_email,
+    };
+
+    logout(payload)
+      .unwrap()
+      .then((result) => {
+        Cookies.remove("token");
+        localStorage.removeItem("Token");
+        localStorage.removeItem("Username");
+        localStorage.removeItem("Email");
+        router.push("/login");
+        showSuccessToast(result?.message);
+      })
+      .catch((error) => {
+        showErrorToast(error?.data.message);
+        console.log(error);
+      });
+
+    e.preventDefault();
+  };
 
   return (
     <div className="max-w-full mx-auto bg-gray-200">
@@ -42,8 +80,10 @@ function Navbar() {
               ? "Category"
               : pathname === "/customer"
               ? "Customer"
-              : pathname === "/seting"
+              : pathname === "/setting"
               ? "Setting"
+              : pathname === "/logout"
+              ? "Logout"
               : null}
           </div>
 
@@ -105,8 +145,8 @@ function Navbar() {
       <div
         className={
           navIcon === true
-            ? "hidden lg:block min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5"
-            : "lg:block min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5 ease-in duration-700"
+            ? "lg:flex flex-col h-full hidden w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5"
+            : " lg:block min-h-screen w-[210px] z-20 fixed top-0 left-0 bg-[#F8F9FA] pt-5 ease-in duration-700"
         }
       >
         <div
@@ -124,12 +164,18 @@ function Navbar() {
 
         {menuLinks.map((link, index) => {
           const isActive = pathname === link.href;
+          const isLastItem = index === menuLinks.length - 1;
           return (
-            <Link href={link.href} key={index} className="">
+            <Link
+              href={link.href}
+              key={index}
+              onClick={() => handleMenuClick(link)}
+              className={isLastItem ? "mt-auto" : ""}
+            >
               <div
                 className={
                   isActive
-                    ? "flex justify-start items-center text-[14px] gap-4 border bg-[#4256A6] text-white py-2 px-4 mx-6 my-4 rounded-lg "
+                    ? "flex justify-start items-center text-[14px] gap-4 border bg-[#4256A6] text-white py-2 px-4 mx-6 my-4 rounded-lg"
                     : "flex justify-start items-center  text-[14px] gap-4 text-[#B6B6B6] hover:text-white hover:border rounded-lg px-4 py-2 my-4 mx-6 hover:bg-[#4256A6] "
                 }
               >
@@ -139,6 +185,12 @@ function Navbar() {
             </Link>
           );
         })}
+        {/* <div className="cursor-pointer flex justify-center items-center text-[14px] gap-4 text-[#B6B6B6] hover:text-white hover:border rounded-lg px-4 py-2 my-4 mx-6 hover:bg-[#4256A6]">
+          <p>
+            <TbLogout />
+          </p>
+          <p>Logout</p>
+        </div> */}
       </div>
     </div>
   );

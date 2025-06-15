@@ -14,7 +14,7 @@ import { GetFromLocalStorage } from "@/app/utils/helpers";
 import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 import { PricingTypeData } from "./data";
 
-export const AddProductModal = ({ onClickClose }) => {
+export const AddProductModal = ({ onClickClose, refetch }) => {
   const business_email = GetFromLocalStorage("Email");
   const { data: getCategories } = useGetCategoriesQuery(business_email);
   const [createProduct, { isLoading }] = useCreateProductMutation();
@@ -49,6 +49,7 @@ export const AddProductModal = ({ onClickClose }) => {
       .unwrap()
       .then((result) => {
         showSuccessToast(result?.message);
+        refetch();
         console.log(result);
         onClickClose();
       })
