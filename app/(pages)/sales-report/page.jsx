@@ -31,8 +31,6 @@ function SalesReport() {
   const business_email = GetFromLocalStorage("Email");
   const token = GetFromLocalStorage("Token");
 
-  console.log(token);
-
   // console.log(getAnalytics);
 
   const salesData = [
@@ -165,7 +163,6 @@ function SalesReport() {
 
         const responseData = await analytics.json();
 
-        // Assuming the API returns an array of objects: { label: string, value: number }
         const date = responseData?.data.map((item) => item.date);
         const totalSales = responseData?.data.map((item) => item.total_sales);
         const totalProfit = responseData?.data.map((item) => item.total_profit);
@@ -179,9 +176,9 @@ function SalesReport() {
           xaxis: { categories: date },
         }));
 
-        console.log(date);
-        console.log(totalSales);
-        console.log(totalProfit);
+        // console.log(date);
+        // console.log(totalSales);
+        // console.log(totalProfit);
       } catch (error) {
         console.error("Error fetching API data:", error);
       }

@@ -165,13 +165,13 @@ function Category() {
                   }}
                   name={"Add"}
                 />
-                <CustomButton
+                {/* <CustomButton
                   icon={<SiGitconnected />}
                   style={{
                     background: "#4256A6",
                   }}
                   name={"Assign"}
-                />
+                /> */}
               </div>
             </div>
             <div className="w-[100%] overflow-auto">

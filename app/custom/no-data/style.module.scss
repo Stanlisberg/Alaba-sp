@@ -1,0 +1,39 @@
+.NoData {
+  .ImageContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .Message {
+    margin-top: 3.375rem;
+
+    span {
+      display: block;
+      color: var(--light-purple);
+      text-align: center;
+    }
+
+    h5 {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .NoData {
+    .Message {
+      margin-top: 3.375rem;
+
+      span {
+        display: block;
+        color: var(--light-purple);
+        text-align: center;
+      }
+
+      h5 {
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+      }
+    }
+  }
+}

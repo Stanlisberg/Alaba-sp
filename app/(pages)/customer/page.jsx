@@ -6,6 +6,7 @@ import { DatePickerComp } from "@/app/custom/date-picker";
 import { CustomSelect } from "@/app/custom/select-comp";
 import { Table } from "antd";
 import Image from "next/image";
+import NoData from "@/app/custom/no-data";
 
 function Customer() {
   const [date, setDate] = useState();
@@ -125,7 +126,7 @@ function Customer() {
           className="hidden md:block w-[338px] lg:w-[400px]"
         />
       </div>
-      <div className="flex flex-col md:flex-row gap-4 md:justify-between md:items-center">
+      {/* <div className="flex flex-col md:flex-row gap-4 md:justify-between md:items-center">
         <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8 w-full md:w-[50%] ">
           <div className="flex px-10 justify-between items-center pt-5">
             <div>
@@ -201,6 +202,12 @@ function Customer() {
               </div>
             </div>
           </div>
+        </div>
+      </div> */}
+
+      <div className="grid place-items-center h-[70vh] border">
+        <div className="text-[gray] font-mono font-[500] text-[18px]">
+          <NoData />
         </div>
       </div>
     </Landing>

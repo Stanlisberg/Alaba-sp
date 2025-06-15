@@ -29,7 +29,7 @@ function LandingPage() {
       .unwrap()
       .then((result) => {
         Cookies.set("token", result.token, {
-          expires: 7, // Cookie expires in 7 days
+          expires: 0.5, // Cookie expires in 7 days
           path: "/", // Available across the app
           secure: process.env.NODE_ENV === "production", // Use secure cookies in production
           sameSite: "Strict", // Prevent CSRF

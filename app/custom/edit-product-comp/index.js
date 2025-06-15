@@ -24,7 +24,6 @@ export const EditProductModal = ({ onClickCancel, id, refetch }) => {
   });
   const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
-  console.log(getSingleProduct);
 
   const categoryData = useMemo(() => {
     return (

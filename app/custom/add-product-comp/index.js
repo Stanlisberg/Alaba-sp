@@ -30,8 +30,6 @@ export const AddProductModal = ({ onClickClose, refetch }) => {
     );
   }, [getCategories?.data]);
 
-  // console.log(getCategories?.data);
-
   const onSubmit = (values) => {
     const payload = {
       name: values.name,
