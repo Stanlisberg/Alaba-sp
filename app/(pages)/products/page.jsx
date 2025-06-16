@@ -29,7 +29,6 @@ function Products() {
   const [deleteModal, setDeleteModal] = useState(false);
   const [addModal, setAddModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const [removeModal, setRemoveModal] = useState(false);
   const business_email = GetFromLocalStorage("Email");
 
   const {
@@ -55,7 +54,7 @@ function Products() {
       .then((result) => {
         console.log(result);
         refetch();
-        setRemoveModal(!removeModal);
+        setDeleteModal(!deleteModal);
         showSuccessToast(result?.message);
       })
       .catch((error) => {
@@ -81,7 +80,8 @@ function Products() {
         <div className="flex items-center gap-2">
           <div className="min-w-[50px] bg-[#e0e2e7] h-[50px] rounded-[50%] items-center justify-center overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/dbg2z1svm/image/upload/v1715805600/Ellipse_2336_hwjx7a.png"
+              // src="https://res.cloudinary.com/dbg2z1svm/image/upload/v1715805600/Ellipse_2336_hwjx7a.png"
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1732629133/zipper-fashion-casual-clothing-background-Photoroom_cqnhyp.svg"
               alt="image"
               width={50}
               height={50}

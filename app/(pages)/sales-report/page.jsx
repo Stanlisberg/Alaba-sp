@@ -25,6 +25,8 @@ import { GetFromLocalStorage } from "@/app/utils/helpers";
 
 function SalesReport() {
   const [date, setDate] = useState();
+  const [sales, setSales] = useState();
+  const [profit, setProfit] = useState();
   // const { data: getAnalytics } = useGetAnalyticsQuery(
   //   "ezegwukingston@gmail.com"
   // );
@@ -167,6 +169,9 @@ function SalesReport() {
         const totalSales = responseData?.data.map((item) => item.total_sales);
         const totalProfit = responseData?.data.map((item) => item.total_profit);
 
+        setSales(totalSales);
+        setProfit(totalProfit);
+
         setSeries([
           { name: "Total Sales", data: totalSales },
           { name: "Total Profit", data: totalProfit },
@@ -258,7 +263,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
                 }
-                count={"$1k"}
+                count={`₦${
+                  (Number(sales) + Number(profit))?.toLocaleString() ?? 0
+                }`}
                 text={"Gross Sales"}
                 subText={"+4% from yesterday"}
               />
@@ -268,7 +275,7 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236158/Icon_1_fjyhv1.svg"
                 }
-                count={"$8k"}
+                count={"₦0"}
                 text={"Refund"}
                 subText={"+4% refunded"}
               />
@@ -278,7 +285,7 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236211/Icon_4_bunvun.svg"
                 }
-                count={"5%"}
+                count={"65%"}
                 text={"Discount"}
                 subText={"+8% from yesterday"}
               />
@@ -288,7 +295,7 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236097/Icon_3_swkeds.svg"
                 }
-                count={"$1k"}
+                count={`₦${Number(profit)?.toLocaleString() ?? 0}`}
                 text={"Net Profit"}
                 subText={"+8% from yesterday"}
               />
@@ -298,9 +305,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
                 }
-                count={"$1k"}
+                count={`₦${Number(sales)?.toLocaleString() ?? 0}`}
                 text={"Net Sales"}
-                subText={"+8% from yesterday"}
+                subText={"+8% from yesterday"} 
               />
             </SwiperSlide>
           </Swiper>
