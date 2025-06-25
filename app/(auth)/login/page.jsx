@@ -18,6 +18,7 @@ function LandingPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [loginUser, { isLoading }] = useLoginMutation();
+  const expiresIn = 10800 * 1000;
 
   const handleLogin = (e) => {
     const payload = {
@@ -29,11 +30,14 @@ function LandingPage() {
       .unwrap()
       .then((result) => {
         Cookies.set("token", result.token, {
-          expires: 0.5, // Cookie expires in 7 days
+          expires: expiresIn, // Cookie expires in 7 days
           path: "/", // Available across the app
           secure: process.env.NODE_ENV === "production", // Use secure cookies in production
           sameSite: "Strict", // Prevent CSRF
         });
+        setTimeout(() => {
+          Cookies.remove("token");
+        }, expiresIn);
         SaveToLocalStorage("Username", result.data.first_name);
         SaveToLocalStorage("Token", result.token);
         SaveToLocalStorage("Email", result.data.business_email);
