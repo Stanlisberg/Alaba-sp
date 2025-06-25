@@ -17,7 +17,7 @@ const NoData = () => {
       <div className={styles.Message}>
         {/* <span>No Data Retrieved</span> */}
         <h5>
-          Whoops! No Customer Data Currently <br /> Available.
+          Feature Coming Soon... <br />
         </h5>
       </div>
     </div>

@@ -19,6 +19,7 @@ import { AddCategoryModal } from "@/app/custom/add-category-comp";
 import { EditCategoryModal } from "@/app/custom/edit-category-comp";
 import { GetFromLocalStorage } from "@/app/utils/helpers";
 import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
+import Image from "next/image";
 
 function Category() {
   const [date, setDate] = useState();
@@ -68,12 +69,23 @@ function Category() {
     );
   }, [getCategories?.data]);
 
+  console.log(tableData);
+
   const categoryTable = [
     {
       title: "Category Name",
       dataIndex: "name",
       render: (name, content) => (
         <div className="flex items-center gap-2">
+          <div className="min-w-[50px] bg-[#e0e2e7] h-[50px] rounded-[50%] items-center justify-center overflow-hidden">
+            <Image
+              src="https://res.cloudinary.com/drtzfu730/image/upload/v1719707191/samples/ecommerce/shoes.png"
+              alt="image"
+              width={50}
+              height={50}
+              className="object-contain"
+            />
+          </div>
           <p className="text-[15px] leading-[20px]">{name}</p>
         </div>
       ),
@@ -125,15 +137,16 @@ function Category() {
             value={date}
             onChange={(date) => setDate(date)}
             style={{ fontSize: "16px" }}
-            className="w-[338px] lg:w-[400px]"
+            className="w-[320px] lg:w-[400px]"
           />
           <CustomSelect
             labelText=""
             value={"Days"}
             errorMessage=""
             options=""
-            className="w-[338px] lg:w-[400px]"
+            className="w-[320px] lg:w-[400px]"
             size="medium"
+            s
           />
           <CustomSelect
             labelText=""
@@ -165,13 +178,13 @@ function Category() {
                   }}
                   name={"Add"}
                 />
-                {/* <CustomButton
+                <CustomButton
                   icon={<SiGitconnected />}
                   style={{
                     background: "#4256A6",
                   }}
                   name={"Assign"}
-                /> */}
+                />
               </div>
             </div>
             <div className="w-[100%] overflow-auto">

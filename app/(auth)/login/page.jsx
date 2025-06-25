@@ -55,7 +55,7 @@ function LandingPage() {
     e.preventDefault();
   };
   return (
-    <main className="max-w-full mx-auto">
+    <main className="max-w-full mx-auto mb-10">
       <nav className="my-10 max-w-[1200px] mx-auto flex py-2 pr-4 md:pr-0 justify-between items-center">
         <div
           className="flex justify-center items-center cursor-pointer"
@@ -136,7 +136,7 @@ function LandingPage() {
           </div>
         </div>
       </section>
-      <footer className="max-w-full px-32 custom mt-32 ">
+      {/* <footer className="max-w-full px-32 custom mt-32 ">
         <div className="grid grid-cols-12 w-full md:max-w-[1100px] px-5 mx-auto text-[12px] pb-10 md:20 gap-10">
           <div className="col-span-10 md:col-span-4 flex flex-col gap-10 ">
             <Image
@@ -239,7 +239,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </main>
   );
 }

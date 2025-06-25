@@ -25,25 +25,44 @@ import { GetFromLocalStorage } from "@/app/utils/helpers";
 
 function SalesReport() {
   const [date, setDate] = useState();
-  const [sales, setSales] = useState();
-  const [profit, setProfit] = useState();
+  const [totalSales, setTotalSales] = useState();
+  const [totalProfit, setTotalProfit] = useState();
+  const [counterSales, setCounterSales] = useState();
+  const [counterProfit, setCounterProfit] = useState();
   // const { data: getAnalytics } = useGetAnalyticsQuery(
   //   "ezegwukingston@gmail.com"
   // );
   const business_email = GetFromLocalStorage("Email");
   const token = GetFromLocalStorage("Token");
 
-  // console.log(getAnalytics);
+  const todayDate = (day) => {
+    if (day > 3 && day < 21) return "th";
+    switch (day % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
+
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.toLocaleString("default", { month: "long" });
+  const year = today.getFullYear().toString();
+  const myDate = `${day}${todayDate(day)} ${month} ${year}`;
 
   const salesData = [
-    { date: "12th January, 24", sales: "Sales Report" },
-    { date: "12th January, 24", sales: "Sales Report" },
-    { date: "12th January, 24", sales: "Sales Report" },
-    { date: "12th January, 24", sales: "Sales Report" },
-    { date: "12th January, 24", sales: "Sales Report" },
-    { date: "12th January, 24", sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
+    { date: myDate, sales: "Sales Report" },
   ];
-
   // const { dateData, totalSales, totalProfit } = useMemo(() => {
   //   // if (!getAnalytics?.data || Array.isArray(getAnalytics?.data)) {
   //   //   return { dateData: [], totalSales: [], totalProfit: [] };
@@ -169,8 +188,17 @@ function SalesReport() {
         const totalSales = responseData?.data.map((item) => item.total_sales);
         const totalProfit = responseData?.data.map((item) => item.total_profit);
 
-        setSales(totalSales);
-        setProfit(totalProfit);
+        const totalSalesCounter = responseData?.data.reduce(
+          (sum, item) => sum + item.total_sales,
+          0
+        );
+        const totalProfitCounter = responseData?.data.reduce(
+          (sum, item) => sum + item.total_profit,
+          0
+        );
+
+        setCounterSales(totalSalesCounter);
+        setCounterProfit(totalProfitCounter);
 
         setSeries([
           { name: "Total Sales", data: totalSales },
@@ -181,9 +209,7 @@ function SalesReport() {
           xaxis: { categories: date },
         }));
 
-        // console.log(date);
-        // console.log(totalSales);
-        // console.log(totalProfit);
+        console.log(responseData);
       } catch (error) {
         console.error("Error fetching API data:", error);
       }
@@ -192,6 +218,15 @@ function SalesReport() {
     fetchData();
   }, []);
 
+  const grossSales = Number(counterSales) + Number(counterProfit);
+  const grossPercent = (counterProfit / counterSales) * 100;
+  const netProfitPercent = (counterProfit / grossSales) * 100;
+  const netSalesPercent = (counterSales / grossSales) * 100;
+  const discount = counterProfit - counterSales;
+  const discountPercent = (counterProfit - counterSales) / counterProfit;
+  const refund = grossSales - counterSales;
+  const refundPercent = (refund / grossSales) * 100;
+
   return (
     <Landing>
       <div className="flex flex-col mt-2 gap-4 md:flex-row lg:justify-between items-center ">
@@ -199,14 +234,14 @@ function SalesReport() {
           value={date}
           onChange={(date) => setDate(date)}
           style={{ fontSize: "16px" }}
-          className="w-[338px] lg:w-[400px]"
+          className="w-[320px] lg:w-[400px]"
         />
         <CustomSelect
           labelText=""
           value={"Days"}
           errorMessage=""
           options=""
-          className="w-[338px] lg:w-[400px]"
+          className="w-[320px] lg:w-[400px]"
           size="medium"
         />
         <CustomSelect
@@ -215,7 +250,7 @@ function SalesReport() {
           errorMessage=""
           options=""
           size="medium"
-          className="hidden md:block w-[338px] lg:w-[400px]"
+          className="hidden md:block w-[320px] lg:w-[400px]"
         />
       </div>
       <div className="mt-5 bg-[#F8F9FA] rounded-lg pb-8">
@@ -256,18 +291,16 @@ function SalesReport() {
                 slidesPerView: 4,
               },
             }}
-            onSlideChange={() => console.log("slide change")}
+            onSlideChange={() => {}}
           >
             <SwiperSlide>
               <PinkCounter
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
                 }
-                count={`₦${
-                  (Number(sales) + Number(profit))?.toLocaleString() ?? 0
-                }`}
+                count={`₦${Number(grossSales).toLocaleString() ?? 0}`}
                 text={"Gross Sales"}
-                subText={"+4% from yesterday"}
+                subText={`${grossPercent?.toFixed(2)}% from yesterday`}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -275,9 +308,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236158/Icon_1_fjyhv1.svg"
                 }
-                count={"₦0"}
+                count={`₦${Number(refund).toLocaleString() ?? 0}`}
                 text={"Refund"}
-                subText={"+4% refunded"}
+                subText={`${refundPercent.toFixed(2)}% from yesterday`}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -285,9 +318,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236211/Icon_4_bunvun.svg"
                 }
-                count={"65%"}
+                count={`₦${Number(discount)?.toLocaleString() ?? 0}`}
                 text={"Discount"}
-                subText={"+8% from yesterday"}
+                subText={`${discountPercent.toFixed(2)}% from yesterday`}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -295,9 +328,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730236097/Icon_3_swkeds.svg"
                 }
-                count={`₦${Number(profit)?.toLocaleString() ?? 0}`}
+                count={`₦${Number(counterProfit)?.toLocaleString() ?? 0}`}
                 text={"Net Profit"}
-                subText={"+8% from yesterday"}
+                subText={`${netProfitPercent.toFixed(2)}% from yesterday`}
               />
             </SwiperSlide>
             <SwiperSlide>
@@ -305,9 +338,9 @@ function SalesReport() {
                 icon={
                   "https://res.cloudinary.com/dbg2z1svm/image/upload/v1730227287/Icon_e6c3qy.svg"
                 }
-                count={`₦${Number(sales)?.toLocaleString() ?? 0}`}
+                count={`₦${Number(counterSales)?.toLocaleString() ?? 0}`}
                 text={"Net Sales"}
-                subText={"+8% from yesterday"} 
+                subText={`${netSalesPercent.toFixed(2)}% from yesterday`}
               />
             </SwiperSlide>
           </Swiper>

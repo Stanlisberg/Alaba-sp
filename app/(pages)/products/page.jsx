@@ -70,13 +70,13 @@ function Products() {
     return [];
   }, [getProducts?.data]);
 
-  // console.log(tableData);
+  console.log(tableData);
 
   const columns = [
     {
-      title: "Product",
+      title: "Product Name",
       dataIndex: "name",
-      render: (data) => (
+      render: (name) => (
         <div className="flex items-center gap-2">
           <div className="min-w-[50px] bg-[#e0e2e7] h-[50px] rounded-[50%] items-center justify-center overflow-hidden">
             <Image
@@ -153,14 +153,14 @@ function Products() {
             value={date}
             onChange={(date) => setDate(date)}
             style={{ fontSize: "16px" }}
-            className="w-[338px] lg:w-[400px]"
+            className="w-[320px] lg:w-[400px]"
           />
           <CustomSelect
             labelText=""
             value={"Days"}
             errorMessage=""
             options=""
-            className="w-[338px] lg:w-[400px]"
+            className="w-[320px] lg:w-[400px]"
             size="medium"
           />
           <CustomSelect
