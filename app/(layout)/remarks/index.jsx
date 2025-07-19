@@ -34,7 +34,7 @@ const Remarks = () => {
         }}
         onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className="bg-gray-200 gap-10  w-full h-full flex flex-col px-6 py-12 rounded-[10px]">
             <div className="flex flex-row gap-5 justify-between items-center">
               <p className="font-bold">Sarah Mark</p>
@@ -96,7 +96,7 @@ const Remarks = () => {
               <div></div>
             </div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </section>
   );

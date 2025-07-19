@@ -11,7 +11,7 @@ export function middleware(request) {
   const publicRoutes = ["/login", "/"];
 
   // Define restricted routes for logged-in users
-  const restrictedRoutes = ["/login", "/"];
+  const restrictedRoutes = ["/login"];
 
   if (token && restrictedRoutes.includes(pathname)) {
     console.log("User is logged in, redirecting to /sales-report");
